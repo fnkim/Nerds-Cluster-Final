@@ -16,7 +16,7 @@ I don’t know how far the seaside town is…
 
 Ughhhh… there must be something edible around here…
 
-Woah! Am I imagining things, or is this a candyland?
+Woah! Am I imagining things, or am I in a candyland?
 
 Whose house is this, and why does it look so tasty?
 
@@ -29,7 +29,7 @@ Traveller: Sorry, just hungry…
 		This your house?
 
 Witch: For course! You’re not welcome to eat it!
-You humans are so disgusting. You guys think you can go around eating everything.
+You humans are so disgusting. You think you can go around eating everything.
 
 Traveller: Oh yeah? And why shouldn’t I eat it? Why shouldn’t I eat YOU too?
 
@@ -37,14 +37,14 @@ Witch: It’s just disrespectful!
 
 Traveller: Give me a reason why I shouldn’t eat you.
 
-Witch: Well… it’s against the candyland law. 
+Witch: Well… it’s against candyland law. 
 Traveller: Who cares? No one’s gonna know.
 	*rumble* Ugghh, I’m so hungry I could eat a house… and a witch…
 
 Witch: How ‘bout I cook something up for you?
 
 Traveller: Sure, why not.
-	I feel like a berry tart.
+	I feel like eating a berry tart.
 	A good tart with lots of berries on it. Why don’t you make something like that?
 
 Witch: Sure, as long as you don’t eat my property and me. Stand here and I’ll make that for you.
@@ -57,7 +57,7 @@ End cutscene
 
 Press [E] to interact
 
-Traveller: I feel like a berry tart right now… Hurry up and make it for me or you won’t see the Sun again.
+Traveller: I feel like eating a berry tart right now… Hurry up and make it for me or you won’t see the Sun again.
 
 
 
