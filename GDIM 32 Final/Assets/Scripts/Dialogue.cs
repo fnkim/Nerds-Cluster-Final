@@ -47,7 +47,7 @@ Traveller: Sure, why not.
 	I feel like a berry tart.
 	A good tart with lots of berries on it. Why don’t you make something like that?
 
-Witch: Sure, as long as you don’t eat my property and me. Sit here and I’ll make that for you.
+Witch: Sure, as long as you don’t eat my property and me. Stand here and I’ll make that for you.
 
 End cutscene
 
