@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCInteractable : MonoBehaviour, IInteractables
+public class NPCInteractable : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    [SerializeField] private string prompt = "Press [E] to interact";
-
-    public string Prompt => prompt;
+    [SerializeField] private string promptText = "[E] Talk";
+    public string PromptText => promptText;
 
     public void Interact()
     {
-        // Replace with your dialogue, animation, etc.
-        Debug.Log($"Talking to {gameObject.name}!");
+        Debug.Log($"Interacting with NPC: {name}");
     }
 }

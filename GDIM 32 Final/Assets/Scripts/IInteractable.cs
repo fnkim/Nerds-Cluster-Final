@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractables
+public interface IInteractable
 {
     void Interact();
-    string Prompt { get; }
+    string PromptText { get; }
 }
