@@ -9,6 +9,6 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log($"Interacting with NPC: {name}");
+        Debug.Log($"Interacting");
     }
 }

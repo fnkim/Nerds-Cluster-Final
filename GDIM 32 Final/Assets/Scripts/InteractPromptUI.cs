@@ -5,16 +5,26 @@ using UnityEngine;
 
 public class InteractPromptUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text promptText;
+    [SerializeField] private TMP_Text interactPromptText;
+    [SerializeField] protected TMP_Text travelerDialogue;
 
-    public void Show(string text)
+    public void ShowPrompt(string text)
     {
-        promptText.text = text;
-        promptText.gameObject.SetActive(true);
+        interactPromptText.text = text;
+        interactPromptText.gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public void HidePrompt()
     {
-        promptText.gameObject.SetActive(false);
+        interactPromptText.gameObject.SetActive(false);
+    }
+    public void ShowDialogue()
+    {
+        travelerDialogue.gameObject.SetActive(true);
+    }
+
+    public void HideDialogue()
+    {
+        travelerDialogue.gameObject.SetActive(false);
     }
 }

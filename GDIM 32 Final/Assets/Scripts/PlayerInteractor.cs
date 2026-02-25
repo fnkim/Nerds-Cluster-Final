@@ -15,7 +15,8 @@ public class PlayerInteractor : MonoBehaviour
         if (current != null && Input.GetKeyDown(interactKey))
         {
             current.Interact();
-            promptUI.Hide();
+            promptUI.HidePrompt();
+            promptUI.ShowDialogue();
         }
     }
 
@@ -47,12 +48,12 @@ public class PlayerInteractor : MonoBehaviour
     private void SetCurrent(IInteractable interactable)
     {
         current = interactable;
-        promptUI.Show(interactable.PromptText);
+        promptUI.ShowPrompt(interactable.PromptText);
     }
 
     private void ClearCurrent()
     {
         current = null;
-        promptUI.Hide();
+        promptUI.HidePrompt();
     }
 }
