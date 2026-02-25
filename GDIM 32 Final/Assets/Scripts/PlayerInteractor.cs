@@ -15,6 +15,7 @@ public class PlayerInteractor : MonoBehaviour
         if (current != null && Input.GetKeyDown(interactKey))
         {
             current.Interact();
+            promptUI.Hide();
         }
     }
 
