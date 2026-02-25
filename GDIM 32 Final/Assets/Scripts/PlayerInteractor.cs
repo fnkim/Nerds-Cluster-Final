@@ -55,5 +55,6 @@ public class PlayerInteractor : MonoBehaviour
     {
         current = null;
         promptUI.HidePrompt();
+        promptUI.HideDialogue();
     }
 }

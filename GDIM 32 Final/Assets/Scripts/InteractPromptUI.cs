@@ -6,7 +6,7 @@ using UnityEngine;
 public class InteractPromptUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text interactPromptText;
-    [SerializeField] protected TMP_Text travelerDialogue;
+    [SerializeField] private GameObject travelerDialogue;
 
     public void ShowPrompt(string text)
     {
