@@ -6,7 +6,6 @@ using UnityEngine;
 public class InteractPromptUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text interactPromptText;
-    [SerializeField] private GameObject travelerDialogue;
 
     public void ShowPrompt(string text)
     {
@@ -17,14 +16,5 @@ public class InteractPromptUI : MonoBehaviour
     public void HidePrompt()
     {
         interactPromptText.gameObject.SetActive(false);
-    }
-    public void ShowDialogue()
-    {
-        travelerDialogue.gameObject.SetActive(true);
-    }
-
-    public void HideDialogue()
-    {
-        travelerDialogue.gameObject.SetActive(false);
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
+  m_Name: TravelerDialogue
+  m_EditorClassIdentifier: 
+  speakerName: Traveler
+  lines:
+  - "Traveler: I feel like a berry tart right now\u2026 Hurry up and make it for
+    me or you won\u2019t see the Sun again."
+  - 'Traveler: Yoooo, this is so fire. *eats*'
+  - "Traveler: YOU BUBBLEGUM DUM DUM WITCH!! What happened to my order? Why do you
+    and your house look so appetizing right now?\r"
