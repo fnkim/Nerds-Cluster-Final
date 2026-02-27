@@ -44,7 +44,7 @@ public class PlayerInteractor : MonoBehaviour
 
         Ray ray = new Ray(rayOrigin.position, rayOrigin.forward);
 
-        RaycastHit[] hits = Physics.SphereCastAll(
+        RaycastHit[] hit = Physics.SphereCastAll(
             ray,
             sphereRadius,
             interactDistance,
@@ -55,7 +55,7 @@ public class PlayerInteractor : MonoBehaviour
         IInteractable newTarget = null;
         float bestDist = float.MaxValue;
 
-        foreach (var h in hits)
+        foreach (var h in hit)
         {
             var interactable = h.collider.GetComponentInParent<IInteractable>();
             if (interactable == null) continue;
@@ -72,7 +72,7 @@ public class PlayerInteractor : MonoBehaviour
         _currentTarget = newTarget;
 
         if (_currentTarget != null)
-            promptUI.ShowPrompt(_currentTarget.PromptText);
+            promptUI.ShowPrompt(_currentTarget.PromptText, _currentTarget.PromptAnchor);
         else
         {
             promptUI.HidePrompt();
