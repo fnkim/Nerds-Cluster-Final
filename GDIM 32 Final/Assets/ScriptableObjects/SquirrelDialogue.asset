@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
   m_Name: SquirrelDialogue
   m_EditorClassIdentifier: 
-  speakerName: 
-  lines: []
+  speakerName: Shopkeeper
+  lines:
+  - "Shopkeeper: Welcome to the Squirrel\u2019s Stash!! We probably have what you\u2019re
+    looking for."
+  - 'Witch: Can I have some flour?'
+  - "Shopkeeper: Sorry, flour\u2019s off limits for now. This valuable product has
+    been scarce ever since the wheat famine, so you\u2019ll need special access.
+    ;)\r"
