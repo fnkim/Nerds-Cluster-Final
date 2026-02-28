@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string promptText = "[E] Talk";
-    [SerializeField] private DialogueAsset dialogue;
+    [SerializeField] private DialogueData dialogue;
     public string PromptText => promptText;
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;

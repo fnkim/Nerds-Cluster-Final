@@ -40,9 +40,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 653ff131b9a40034081ddf33b2dce7b4, type: 2}
+    - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: promptAnchor
       value: 
       objectReference: {fileID: 1499604780567703234}
+    - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
+      propertyPath: visualToRemove
+      value: 
+      objectReference: {fileID: 7004377214213665979}
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: visualToDestroy
       value: 
@@ -101,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9129624002757266827, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.28
+      value: 55.55
       objectReference: {fileID: 0}
     - target: {fileID: 9129624002757266827, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: m_LocalPosition.y

@@ -4,7 +4,7 @@ public enum BushType { Blueberry, Strawberry, Lemon }
 
 public class Collectable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private BushType type;
+    [SerializeField] private ItemData item;
     [SerializeField] private int amount = 1;
 
     [SerializeField] private string promptText = "[E] Pick up";
@@ -13,7 +13,7 @@ public class Collectable : MonoBehaviour, IInteractable
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;
 
-    [SerializeField] private GameObject visualToDestroy;
+    [SerializeField] private GameObject visualToRemove;
 
     private bool _collected;
 
@@ -22,14 +22,26 @@ public class Collectable : MonoBehaviour, IInteractable
         if (_collected) return;
         _collected = true;
 
-        Debug.Log($"Collected: {type} x{amount}");
+        // Find inventory on player
+        Inventory inv = interactor.GetComponent<Inventory>();
+        if (inv == null)
+        {
+            Debug.LogError("PlayerInteractor has no Inventory on the player!");
+            return;
+        }
 
-        if (visualToDestroy != null)
-            Destroy(visualToDestroy);
+        inv.Add(item, amount);
 
+        // Remove visuals
+        if (visualToRemove != null)
+            Destroy(visualToRemove);
+
+        // Disable colliders so it can't be targeted anymore
         var col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
 
+
+        // Remove interactable script itself (extra safety)
         Destroy(this);
     }
 }

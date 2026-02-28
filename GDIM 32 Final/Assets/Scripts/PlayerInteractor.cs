@@ -12,6 +12,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private InteractPromptUI promptUI;
     [SerializeField] private bool drawDebugGizmos = true;
+    [SerializeField] private GameObject inventoryPanel;
 
     private IInteractable _currentTarget;
 
@@ -35,6 +36,11 @@ public class PlayerInteractor : MonoBehaviour
                 _currentTarget.Interact(this);
                 return;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+            Time.timeScale = inventoryPanel.activeSelf ? 0f : 1f;
         }
     }
 

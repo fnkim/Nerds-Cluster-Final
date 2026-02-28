@@ -40,6 +40,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 383178812844971409d288dead36c970, type: 2}
+    - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
@@ -47,6 +51,10 @@ PrefabInstance:
       propertyPath: promptAnchor
       value: 
       objectReference: {fileID: 8346616954891914070}
+    - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
+      propertyPath: visualToRemove
+      value: 
+      objectReference: {fileID: 4270400338456798413}
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: visualToDestroy
       value: 
