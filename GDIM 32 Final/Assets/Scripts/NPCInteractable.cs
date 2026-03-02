@@ -9,9 +9,12 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     public string PromptText => promptText;
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;
+    [SerializeField] private Animator animator;
 
     public void Interact(PlayerInteractor interactor)
     {
+        animator.SetBool("Talking", true);
+        
         Debug.Log($"Interacting with NPC: {name}");
         DialogueManager.Instance.StartDialogue(dialogue);
     }

@@ -25,14 +25,23 @@ public class DialogueManager : MonoBehaviour
     public void Advance()
     {
         if (_current == null) return;
-        _index++;
-        if (_index >= _current.lines.Length)
+        if (bubble.IsTyping)
         {
-            EndDialogue();
-            return;
+            bubble.fullText = true;
         }
-        ShowCurrentLine();
+        else
+        {
+            _index++;
+            if (_index >= _current.lines.Length)
+            {
+                EndDialogue();
+                return;
+            }
+            ShowCurrentLine();            
+        }
+
     }
+
     public void EndDialogue()
     {
         _current = null;

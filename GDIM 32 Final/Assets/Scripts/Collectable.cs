@@ -15,12 +15,22 @@ public class Collectable : MonoBehaviour, IInteractable
 
     [SerializeField] private GameObject visualToRemove;
 
+    [SerializeField] private Witch Player;
+
+    void Start()
+    {
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        Player = playerObj.GetComponent<Witch>();
+    }
+
     private bool _collected;
 
     public void Interact(PlayerInteractor interactor)
     {
         if (_collected) return;
+        Player.animator.SetTrigger("Interacting");
         _collected = true;
+        
 
         // Find inventory on player
         Inventory inv = interactor.GetComponent<Inventory>();
