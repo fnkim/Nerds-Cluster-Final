@@ -1,7 +1,32 @@
 # GDIM32-Final
 ## Check-In
-### Team Member Name 1
-Put your individual check-in Devlog here.
+### Frances Kim
+1. Contributions
+- Imported 3D assets I modeled into Unity and made them into Prefabs to set up the scene
+- Made the terrain GameObject and set up the textures for different terrain colors
+- Found a toon shader online and extracted the materials from the assets and applied the shader to them.
+- Built the animation controller for the Squirrel NPC, the Traveler NPC, and the Player.
+- Coded the player's movement in the Witch class. This was done with a Vector3 variable called direction which takes in the horizontal and vertical input. This variable is multiplied by a speed variable and Time.deltaTime to move the character controller. There's also some math stuff to smooth the rotation so  the character doesn't snap to the WASD directions. I also normalized the diagonal movement in direction so going diagonally wouldn't be faster
+- Player plays interaction animation when picking up collectable
+- Set up the camera and cinemachine camera for a top down-ish view of the player
+- Set up a new scene that held the cutscene (which is composed of different panels overlayed on top of each other, drawn by Rebecca) and coded the cutscene function. This was done with a class called SlideTransition, which is placed on the canvas containing all the slides. Using a foreach statement, I added all of the child GameObjects of the Canvas to a list of slides, setting the first one active. A method called MovetoNextSlide()  iterates through the slides until the selectedSlide is at 10, when it uses the SceneManager to load the Main scene which contains the game. I set up a button that covered the whole screen which called MovetoNextSlide() when clicked on
+- Added background music to the game by attaching an audio source to the player which plays a looping audio on start
+- Made a typewriter effect by modifying Landon's dialogue bubble script with an IEnumerator IncreaseMaxVisibleChar(string dialogue) which adds onto how many characters textmeshpro shows over time. When the interact button is pressed again while the typing effect is active, it sets the bool fullText to true, which makes all the text show at once
+- Added a sound effect to play during the typewriter effect with an audioclip that's called within the while statement in the IEnumerator
+- Added two point lights to the oven to make a fire effect
+
+
+
+2. Reflection
+
+I think overall, the proposal and break-down were helpful. It gave us a good idea of what the game should look like as we developed it, including specific mechanics like the how the interactions should look. There are some things I think we still need to implement, as we don't have a locator in the game yet. I think adding one and cleaning up some of the code could make it less tightly coupled and make things clearer. We used a google sheets document to keep track of progress.
+
+
+
+
+
+
+
 ### Team Member Name 2
 Put your individual check-in Devlog here.
 ### Team Member Name 3
