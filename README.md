@@ -44,4 +44,4 @@ Put your individual final Devlog here.
 Put your individual final Devlog here.
 
 ## Open-Source Assets
-Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
+- (https://dova-s.jp/en/bgm/detail/22141)[BGM: "After-Five" - Yuhei Komatsu]
