@@ -1,5 +1,8 @@
 # GDIM32-Final
 ## Check-In
+### Group Devlog
+We used intermediate-level vector math in the form of spherical raycasts on the player to detect objects in front of it that are meant to be interacted with like the NPCs and collectable items. The sphere cast on the player object fires a ray defined by origin and direction vectors showing where it starts and where it points respectively, which we tuned to have it cast a ray directly in front of the player so that the player only detects things in front of it and not all around it. Our PlayerInteractor script uses rayOrigin.position and rayOrigin.forward, representing the origin and direction, then using SphereCast so the hitbox is more lenient than a thin line a regular raycast would give. The forward vector in “rayOrigin.forward” is a direction vector in the world space, having a magnitude of 1 and only representing direction. We multiplied this direction by the interaction distance and Unity computed the positions along the ray using vector addition. Using Spherecast sweeps the vector path with a sphere, checking for collisions within that volume of the sphere. This ensures interaction only happens in front of the player and prevents objects behind or to the sides from being detected as said earlier.
+
 ### Frances Kim
 1. Contributions
 - Imported 3D assets I modeled into Unity and made them into Prefabs to set up the scene
@@ -15,17 +18,9 @@
 - Added a sound effect to play during the typewriter effect with an audioclip that's called within the while statement in the IEnumerator
 - Added two point lights to the oven to make a fire effect
 
-
-
 2. Reflection
 
 I think overall, the proposal and break-down were helpful. It gave us a good idea of what the game should look like as we developed it, including specific mechanics like the how the interactions should look. There are some things I think we still need to implement, as we don't have a locator in the game yet. I think adding one and cleaning up some of the code could make it less tightly coupled and make things clearer. We used a google sheets document to keep track of progress.
-
-
-
-
-
-
 
 ### Landon Her
 I contributed to coding player interactions. PlayerInteractor, IInteractable, InteractPromptUI are a few I’ve contributed too. PlayerInteractor handles the detection of and interaction with NPCs and collectables using Physics.SphereCastAll. The class included variables similar to those seen in some of the recent in-class demos being rayOrigin, sphereRadius, and interactDistance. The breakdowns always help in giving me a place to start as they outline what scripts/objects we are going to have and what’s in them like their components for example. The proposal helped in the sense that it was a more structured form of the breakdown. It gave me the gist of what our game was gonna be about and its theme. It immersed me in a way. Whereas the breakdown gave me a point to start, the proposal gave me the next step. Thinking back on it though, our proposal wasn’t the most detailed, ending up with me having to address them later as I was coding. But like I said, the proposal gave me the gist and enough to get me started somewhere. I think planning the proposal in the way we do breakdowns would help improve my planning process for future projects. For the finite state machine in the proposal for example, it would’ve helped if we listed everything that would have a finite state machine and what states each thing would have in a bullet point like list or something that’s easy to read.
