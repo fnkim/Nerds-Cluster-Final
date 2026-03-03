@@ -16,6 +16,7 @@
 
 
 2. Reflection
+
 I think overall, the proposal and break-down were helpful. It gave us a good idea of what the game should look like as we developed it, including specific mechanics like the how the interactions should look. There are some things I think we still need to implement, as we don't have a locator in the game yet. I think adding one and cleaning up some of the code could make it less tightly coupled and make things clearer. We used a google sheets document to keep track of progress.
 
 
