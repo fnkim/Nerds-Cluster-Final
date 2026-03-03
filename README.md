@@ -27,8 +27,9 @@ I think overall, the proposal and break-down were helpful. It gave us a good ide
 
 
 
-### Team Member Name 2
-Put your individual check-in Devlog here.
+### Landon Her
+I contributed to coding player interactions. PlayerInteractor, IInteractable, InteractPromptUI are a few I’ve contributed too. PlayerInteractor handles the detection of and interaction with NPCs and collectables using Physics.SphereCastAll. The class included variables similar to those seen in some of the recent in-class demos being rayOrigin, sphereRadius, and interactDistance. The breakdowns always help in giving me a place to start as they outline what scripts/objects we are going to have and what’s in them like their components for example. The proposal helped in the sense that it was a more structured form of the breakdown. It gave me the gist of what our game was gonna be about and its theme. It immersed me in a way. Whereas the breakdown gave me a point to start, the proposal gave me the next step. Thinking back on it though, our proposal wasn’t the most detailed, ending up with me having to address them later as I was coding. But like I said, the proposal gave me the gist and enough to get me started somewhere. I think planning the proposal in the way we do breakdowns would help improve my planning process for future projects. For the finite state machine in the proposal for example, it would’ve helped if we listed everything that would have a finite state machine and what states each thing would have in a bullet point like list or something that’s easy to read.
+
 ### Team Member Name 3
 Put your individual check-in Devlog here.
 
