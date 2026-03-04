@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: promptText
-      value: '[E] Collect'
+      value: '[E] Pick up'
       objectReference: {fileID: 0}
     - target: {fileID: -8164672701913690514, guid: 9cc4e391d8efbbc4e8ab3a6d95839c4b, type: 3}
       propertyPath: promptAnchor

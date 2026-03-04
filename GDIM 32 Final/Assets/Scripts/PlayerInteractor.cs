@@ -15,7 +15,22 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
 
     private IInteractable _currentTarget;
+    public static PlayerInteractor Instance {get; private set; }
+    public Witch Player {get; private set;}
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        Player = playerObj.GetComponent<Witch>();
+    }
     private void Update()
     {
         if (rayOrigin == null || promptUI == null)
