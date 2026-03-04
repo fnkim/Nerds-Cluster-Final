@@ -13,6 +13,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private InteractPromptUI promptUI;
     [SerializeField] private bool drawDebugGizmos = true;
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject pressTabPanel;
 
     private IInteractable _currentTarget;
     public static PlayerInteractor Instance {get; private set; }
@@ -56,6 +57,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
             Time.timeScale = inventoryPanel.activeSelf ? 0f : 1f;
+            pressTabPanel.SetActive(!pressTabPanel.activeSelf);
         }
     }
 
