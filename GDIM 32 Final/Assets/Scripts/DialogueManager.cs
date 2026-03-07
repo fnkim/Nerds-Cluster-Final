@@ -1,54 +1,161 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
-    [SerializeField] private DialogueBubble bubble;
+    [SerializeField] private DialogueBubble _dialogue;
 
-    private DialogueNode _current;
-    private int _index;
+    private DialogueNode _currentNode;
+    private int _currentLine;
 
-    public bool IsDialogueActive => _current != null;
+    public bool IsDialogueActive => _currentNode != null;
+    
+    private bool _waitingForPlayerResponse;
+    
+    [SerializeField] private Image _portraitUI;
+
+
+    public delegate void DialogueDelegate();
+    public event DialogueDelegate SquirrelSpeaking;
+    public event DialogueDelegate WitchSpeaking;
+    public event DialogueDelegate TravelerSpeaking;
+
+
+
+
+
     private void Awake()
     {
         Instance = this;
-        bubble.HideDialogue();
+        _dialogue.HideDialogue();
     }
+
+
+
+
+
+
     public void StartDialogue(DialogueNode asset)
     {
-        _current = asset;
-        _index = 0;
-        ShowCurrentLine();
+        _currentNode = asset;
+        //sets current line to -1 so that when it advances it gets set to 0
+        _currentLine = 0;
+        Advance();
     }
-    public void Advance()
+
+    private void Update ()
     {
-        if (_current == null) return;
-        if (bubble.IsTyping)
+        if (_currentNode == null) return;
+        
+        //checks if the typewriter effect is going
+        if (!_dialogue.IsTyping)
         {
-            bubble.fullText = true;
+            // if space or mouse button click has been pressed once
+            if(!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                Advance();
+            }
         }
+        // if the typewriter effect has stopped
         else
         {
-            _index++;
-            if (_index >= _current.lines.Length)
+            //if space or mousebutton click is being held
+            if(!_waitingForPlayerResponse && Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
-                EndDialogue();
-                return;
+                //speeds up typewriter effect
+                _dialogue.speedUpText = true;
             }
-            ShowCurrentLine();            
+            else
+            {
+                _dialogue.speedUpText = false;
+            }            
         }
 
+
+
+
+
+
+    }
+
+
+    public void Advance()
+    {
+    /*Basically there is a ScriptableObject called DialogueNode which contains a list of DialogueData, which
+    is a class that contains the dialogue text and the speaker enum. The line below grabs the Dialogue Data
+    info from the current node and current line.
+    */
+
+
+
+        if (_currentNode == null) return;
+
+        if (_currentLine < _currentNode._lines.Length)
+        {
+            DialogueData _dialogueData = _currentNode._lines[_currentLine];
+
+
+            //this grabs the enum for who's the speaker from the dialogue data in the dialoguenode list
+            var _currentSpeaker = _dialogueData._speaker;
+
+            //this invokes different stuff based on what the enum is
+            //basically I'm gonna connect this to the animators to make their heads bob when they're speaking
+            switch (_currentSpeaker)
+            {
+                case Speaker.Squirrel:
+                    SquirrelSpeaking?.Invoke();
+                    break;
+                case Speaker.Witch:
+                    WitchSpeaking?.Invoke();
+                    break; 
+                case Speaker.Traveler:
+                    TravelerSpeaking?.Invoke();
+                    break;    
+                default:
+                    break;
+
+            }
+
+            _dialogue.ShowDialogue(_dialogueData._dialogueText);
+            if (_dialogueData._portrait != null)
+            {
+                _portraitUI.sprite = _dialogueData._portrait;
+            }
+            else
+            {
+                _portraitUI.sprite = null;
+            }
+            _currentLine++;
+        }
+        else if (_currentNode._playerReplyOptions != null && _currentNode._playerReplyOptions.Length > 0)
+        {
+            //show player options
+            _waitingForPlayerResponse = true;
+            _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+
+        } else
+        {
+            //if no more lines left, close UI
+            EndDialogue();
+        }
     }
 
     public void EndDialogue()
     {
-        _current = null;
-        bubble.HideDialogue();
+        _currentNode = null;
+        _currentLine = 0;
+        _waitingForPlayerResponse = false;
+        _dialogue.HideDialogue();
     }
-    private void ShowCurrentLine()
+    public void SelectedOption(int option)
     {
-        bubble.ShowDialogue(_current.lines[_index]);
+        _currentLine = 0;
+        _waitingForPlayerResponse = false;
+
+        _currentNode = _currentNode._npcReplies[option];
+        Advance();
     }
 }

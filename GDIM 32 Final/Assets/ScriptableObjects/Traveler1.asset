@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: TravelerDialogue
+  m_Name: Traveler1
   m_EditorClassIdentifier: 
-  speakerName: Traveler
-  lines:
-  - "Traveler: I feel like a berry tart right now\u2026 Hurry up and make it for
-    me or you won\u2019t see the Sun again."
-  - 'Traveler: Yoooo, this is so fire. *eats*'
-  - "Traveler: YOU BUBBLEGUM DUM DUM WITCH!! What happened to my order? Why do you
-    and your house look so appetizing right now?\r"
+  _lines:
+  - _speaker: 0
+    _portrait: {fileID: 21300000, guid: 3c9c735d65943794a8db593d39c38c87, type: 3}
+    _dialogueText: Hello
+  - _speaker: 0
+    _portrait: {fileID: 0}
+    _dialogueText: no
+  _playerReplyOptions:
+  - Yes
+  - Orange
+  _npcReplies:
+  - {fileID: 11400000, guid: 1726c25a76d03584c9fd6bcf4a683956, type: 2}
