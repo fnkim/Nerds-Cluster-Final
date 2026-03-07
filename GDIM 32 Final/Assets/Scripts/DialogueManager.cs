@@ -18,12 +18,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image _portraitUI;
 
 
-    public delegate void DialogueDelegate();
-    public event DialogueDelegate SquirrelSpeaking;
-    public event DialogueDelegate WitchSpeaking;
-    public event DialogueDelegate TravelerSpeaking;
-
-
 
 
 
@@ -100,24 +94,8 @@ public class DialogueManager : MonoBehaviour
 
             //this grabs the enum for who's the speaker from the dialogue data in the dialoguenode list
             var _currentSpeaker = _dialogueData._speaker;
+            //I'm gonna implement name stuff
 
-            //this invokes different stuff based on what the enum is
-            //basically I'm gonna connect this to the animators to make their heads bob when they're speaking
-            switch (_currentSpeaker)
-            {
-                case Speaker.Squirrel:
-                    SquirrelSpeaking?.Invoke();
-                    break;
-                case Speaker.Witch:
-                    WitchSpeaking?.Invoke();
-                    break; 
-                case Speaker.Traveler:
-                    TravelerSpeaking?.Invoke();
-                    break;    
-                default:
-                    break;
-
-            }
 
             _dialogue.ShowDialogue(_dialogueData._dialogueText);
             if (_dialogueData._portrait != null)

@@ -10,12 +10,18 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;
     [SerializeField] private Animator animator;
+    public void Start()
+    {
+        
+    }
 
     public void Interact(PlayerInteractor interactor)
     {
-        animator.SetBool("Talking", true); //Not completely fixed yet, I want to incorporate this into who's speaking. For now, it just plays the talk animation endlessly
         
         Debug.Log($"Interacting with NPC: {name}");
         DialogueManager.Instance.StartDialogue(dialogue);
     }
+
+
+
 }

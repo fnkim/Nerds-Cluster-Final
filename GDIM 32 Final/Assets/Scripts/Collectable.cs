@@ -28,7 +28,6 @@ public class Collectable : MonoBehaviour, IInteractable
     public void Interact(PlayerInteractor interactor)
     {
         if (_collected) return;
-        Player.animator.SetTrigger("Interacting");
         _collected = true;
         
 

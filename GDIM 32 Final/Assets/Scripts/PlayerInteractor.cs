@@ -24,6 +24,10 @@ public class PlayerInteractor : MonoBehaviour
     public static PlayerInteractor Instance {get; private set; }
     public Witch Player {get; set;}
 
+    public delegate void InteractorDelegate();
+
+    public event InteractorDelegate PickupCollectable;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -51,6 +55,14 @@ public class PlayerInteractor : MonoBehaviour
             // runs when current target contains something AND if the dialogue is not runninng
             if (_currentTarget != null && !DialogueManager.Instance.IsDialogueActive)
             {
+                GameObject targetObject = _currentTarget.gameObject;
+                Collectable targetCollectable = targetObject.GetComponent<Collectable>();
+
+                if (targetCollectable != null)
+                {
+                    PickupCollectable?.Invoke();
+                }
+
                 /*
                 from currenttarget -> get gameobject
                 from gameobject -> get Collectable component

@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Traveler1
   m_EditorClassIdentifier: 
   _lines:
-  - _speaker: 0
-    _portrait: {fileID: 21300000, guid: 3c9c735d65943794a8db593d39c38c87, type: 3}
-    _dialogueText: Hello
-  - _speaker: 0
+  - _speaker: 2
+    _portrait: {fileID: 21300000, guid: 664dd2606a1ad654c91e4a8e3c15a66b, type: 3}
+    _dialogueText: Traveler is Talking
+  - _speaker: 1
     _portrait: {fileID: 0}
-    _dialogueText: no
+    _dialogueText: Witch is Talking
+  - _speaker: 1
+    _portrait: {fileID: 0}
+    _dialogueText: Witch Is still Talking
   _playerReplyOptions:
   - Yes
   - Orange
