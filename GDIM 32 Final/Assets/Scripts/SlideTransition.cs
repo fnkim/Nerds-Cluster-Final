@@ -35,7 +35,7 @@ public class SlideTransition : MonoBehaviour
 
     public void MovetoNextSlide()
     {
-        if(selectedSlide == 10)
+        if(selectedSlide == 22)
         {
             SceneManager.LoadScene("Main");
         }
