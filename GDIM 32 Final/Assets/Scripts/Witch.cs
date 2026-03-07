@@ -11,6 +11,8 @@ public class Witch : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] public Animator animator;
     float turnSmoothVelocity;
+     public delegate void CollectDelegate();
+        public event CollectDelegate Collected;
     void Start()
     {
 
