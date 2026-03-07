@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: '[E] Talk'
-  dialogue: {fileID: 11400000, guid: 38bfe8d2e73c08141951354988202f0e, type: 2}
+  dialogue: {fileID: 11400000, guid: 15669038eb2ceee4aa09f15af0cfcf8e, type: 2}
   promptAnchor: {fileID: 1466184937}
   animator: {fileID: 1224234467}
 --- !u!1 &11730078
@@ -5266,6 +5266,7 @@ MonoBehaviour:
   drawDebugGizmos: 1
   inventoryPanel: {fileID: 458934483}
   pressTabPanel: {fileID: 1652416015}
+  soundEffectSource: {fileID: 0}
 --- !u!54 &656337102
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7648,7 +7649,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 1877223728}
-  _speaker: 
   _portraitUI: {fileID: 893727796}
 --- !u!4 &959421201
 Transform:
