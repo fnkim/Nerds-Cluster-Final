@@ -10,19 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: Squirrel1
+  m_Name: Squirrel3
   m_EditorClassIdentifier: 
   _lines:
   - _speaker: 0
     _portrait: {fileID: 0}
-    _dialogueText: Welcome to the Squirrel's Stash! We probably have what you're
-      looking for.
-  - _speaker: 1
-    _portrait: {fileID: 0}
-    _dialogueText: Can I have some flour?
-  - _speaker: 0
-    _portrait: {fileID: 0}
-    _dialogueText: Sorry, flour's off-limits for now. This valuable product has been
-      scarce since the wheat famine, so you'll need special access.
+    _dialogueText: Starting the squirrel quest.
   _playerReplyOptions: []
-  _npcReplies: []
+  _nextNode: []
+  _setQuestState:
+    _questStateToSet: 2
+    _questToSet: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
+  item: {fileID: 0}

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
+  m_Name: Squirrel1
+  m_EditorClassIdentifier: 
+  _lines:
+  - _speaker: 0
+    _portrait: {fileID: 0}
+    _dialogueText: Welcome to the Squirrel's Stash! We probably have what you're
+      looking for.
+  - _speaker: 1
+    _portrait: {fileID: 0}
+    _dialogueText: Can I have some flour?
+  - _speaker: 0
+    _portrait: {fileID: 0}
+    _dialogueText: 'Sorry, flour''s off-limits for now. '
+  - _speaker: 0
+    _portrait: {fileID: 0}
+    _dialogueText: This valuable product has been scarce since the wheat famine,
+      so you'll need special access.
+  _playerReplyOptions:
+  - '"Give me flour."'
+  - '"What''s it like being a squirrel?"'
+  _nextNode:
+  - friendshipCheck:
+      _friendship: {fileID: 0}
+      _friendshipCondition: 0
+    friendshipChange:
+      _friendship: {fileID: 0}
+      _operation: 0
+    _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
+  - friendshipCheck:
+      _friendship: {fileID: 0}
+      _friendshipCondition: 0
+    friendshipChange:
+      _friendship: {fileID: 0}
+      _operation: 0
+    _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
+  _setQuestState:
+    _questStateToSet: 0
+    _questToSet: {fileID: 0}
+  item: {fileID: 0}

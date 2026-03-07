@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: Traveler2.1
+  m_Script: {fileID: 11500000, guid: 196575a49bea9c344bad7b711856b2a3, type: 3}
+  m_Name: SquirrelFriendship
   m_EditorClassIdentifier: 
-  _lines:
-  - _portrait: 2
-    _dialogueText: You chose yes
-  _playerReplyOptions: []
-  _npcReplies: []
+  FriendshipLevel: 0

@@ -22,8 +22,5 @@ MonoBehaviour:
   - _speaker: 1
     _portrait: {fileID: 0}
     _dialogueText: Witch Is still Talking
-  _playerReplyOptions:
-  - Yes
-  - Orange
-  _npcReplies:
-  - {fileID: 11400000, guid: 1726c25a76d03584c9fd6bcf4a683956, type: 2}
+  _playerReplyOptions: []
+  _nextNode: []

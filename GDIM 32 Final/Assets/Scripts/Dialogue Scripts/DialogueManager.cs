@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +11,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueBubble _dialogue;
 
     private DialogueNode _currentNode;
+
+    private NextNode _nextNode;
+
+    [SerializeField] PlayerInteractor interactor;
+
+    
+
+
     private int _currentLine;
 
     public bool IsDialogueActive => _currentNode != null;
@@ -29,9 +39,6 @@ public class DialogueManager : MonoBehaviour
 
 
 
-
-
-
     public void StartDialogue(DialogueNode asset)
     {
         _currentNode = asset;
@@ -42,6 +49,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update ()
     {
+
         if (_currentNode == null) return;
         
         //checks if the typewriter effect is going
@@ -114,8 +122,53 @@ public class DialogueManager : MonoBehaviour
             _waitingForPlayerResponse = true;
             _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
 
-        } else
+        } 
+        
+        //If the set quest state action has something in it
+        else if (_currentNode._setQuestState._questStateToSet != QuestState.Null)
         {
+            //Sets the _questToSet's Quest State to _questStateToSet
+            _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
+            EndDialogue();
+
+        } 
+        //if there's an item in the inspector
+        
+        else if (_currentNode.item != null)
+        {
+            //grab the inventory
+            Inventory inv = interactor.GetComponent<Inventory>();
+            //add the item to the inventory
+            inv.Add(_currentNode.item, 1);
+            EndDialogue();
+        }
+        //if everything else is done
+        else
+        {
+            //if there are any nodes in the current node's list of next nodes
+            if (_currentNode._nextNode != null)
+            {
+                //cycle through the list of next nodes
+                foreach(NextNode _nextNode in _currentNode._nextNode)
+                {
+                    //if one of them has a friendship check
+                    if (_nextNode.friendshipCheck != null)
+                    {
+                        //there's probably a better way to do this but basically, this checks for if the friendship level is >= the friendship check's required friendship level
+                        if (_nextNode.friendshipCheck._friendship.FriendshipLevel >= _nextNode.friendshipCheck._friendshipCondition)
+                        {
+                            _currentNode = _nextNode._nextDialogueNode;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        //
+
+                    }
+                }            
+            }
+
             //if no more lines left, close UI
             EndDialogue();
         }
@@ -130,10 +183,39 @@ public class DialogueManager : MonoBehaviour
     }
     public void SelectedOption(int option)
     {
+        //Selects which node to go to. "nodeToGoTo" contains the next dialogue node and friendship variable modifiers
+        NextNode nodeToGoTo = _currentNode._nextNode[option];
+
+        //friendship variable
+        FriendshipVariable friendshipVariable = nodeToGoTo.friendshipChange._friendship;
+
+        //operation to change the friendship variable
+        OperationType operation = nodeToGoTo.friendshipChange._operation;
+
+        if (friendshipVariable != null)
+        {
+            switch (operation)
+            {
+                case OperationType.Null:
+                    break;
+                case OperationType.Add:
+                    friendshipVariable.FriendshipLevel ++;
+                    break;
+                case OperationType.Subtract:
+                    friendshipVariable.FriendshipLevel --;
+                    break;
+                default:
+                    break;
+                    
+            }
+        }
+
+
         _currentLine = 0;
         _waitingForPlayerResponse = false;
 
-        _currentNode = _currentNode._npcReplies[option];
+        _currentNode = nodeToGoTo._nextDialogueNode;
+
         Advance();
     }
 }
