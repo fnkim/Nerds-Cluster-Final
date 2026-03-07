@@ -41,13 +41,8 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Input.GetKeyDown(interactKey))
         {
-            if (DialogueManager.Instance.IsDialogueActive)
-            {
-                DialogueManager.Instance.Advance();
-                return;
-            }
 
-            if (_currentTarget != null)
+            if (_currentTarget != null && !DialogueManager.Instance.IsDialogueActive)
             {
                 _currentTarget.Interact(this);
                 return;
