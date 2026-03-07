@@ -52,16 +52,58 @@ public class PlayerInteractor : MonoBehaviour
             if (_currentTarget != null && !DialogueManager.Instance.IsDialogueActive)
             {
                 /*
-                ItemData _itemData = (somehow grab the itemdata in current target)
+                from currenttarget -> get gameobject
+                from gameobject -> get Collectable component
+                if collectable component != null
 
-                _soundEffectClip = _itemData.audio;
+                    ItemData _itemData = grab itemdata from collectable component
 
-                soundEffectSource.play
+                    _soundEffectClip = _itemData.audio;
+
+                    soundEffectSource.play
+        */
 
 
+        ///Event version
+        
+        /*
+            from currenttarget -> get gameobject
+            from gameobject -> get Collectable component
+            if collectable component != null
+            ItemData _itemData = grab itemdata from collectable component
+                collectablesound?.invoke(_itemData.itemSound)
 
 
         */
+
+        // Fake audio player gameobject
+        /*
+
+
+        [serializefield] private audioclip berrysound etc
+
+        hook up the collectable sound thing -> a method
+        
+
+
+        playsound
+
+        switch(itemSound)
+            case ItemSound.Berry:
+            set audio clip to the berry sound
+            case blah balh
+
+        
+        play audio source (audio clip);
+
+        */
+
+
+
+
+
+
+
                 // runs the Interact() method in the _currentTarget
                 _currentTarget.Interact(this);
                 return;
