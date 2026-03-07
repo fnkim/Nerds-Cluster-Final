@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialogue/Dialogue Asset")]
-public class DialogueData : ScriptableObject
+public class DialogueNode : ScriptableObject
 {
     public string speakerName;
     [TextArea(2, 6)]

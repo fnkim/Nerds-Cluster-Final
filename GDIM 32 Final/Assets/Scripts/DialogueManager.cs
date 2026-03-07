@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
     [SerializeField] private DialogueBubble bubble;
 
-    private DialogueData _current;
+    private DialogueNode _current;
     private int _index;
 
     public bool IsDialogueActive => _current != null;
@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
         bubble.HideDialogue();
     }
-    public void StartDialogue(DialogueData asset)
+    public void StartDialogue(DialogueNode asset)
     {
         _current = asset;
         _index = 0;
