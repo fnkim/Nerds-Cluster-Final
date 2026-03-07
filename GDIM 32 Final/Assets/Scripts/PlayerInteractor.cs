@@ -15,6 +15,11 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject pressTabPanel;
 
+    [SerializeField] private AudioSource soundEffectSource;
+    private AudioClip _soundEffectClip;
+
+
+
     private IInteractable _currentTarget;
     public static PlayerInteractor Instance {get; private set; }
     public Witch Player {get; set;}
@@ -37,16 +42,36 @@ public class PlayerInteractor : MonoBehaviour
         if (rayOrigin == null || promptUI == null)
             return;
 
+        // uses raycast to figure out what the target is, updates target
         UpdateRaycastTarget();
 
+        // checks if interact key (e) is being pressed
         if (Input.GetKeyDown(interactKey))
         {
-
+            // runs when current target contains something AND if the dialogue is not runninng
             if (_currentTarget != null && !DialogueManager.Instance.IsDialogueActive)
             {
+                /*
+                ItemData _itemData = (somehow grab the itemdata in current target)
+
+                _soundEffectClip = _itemData.audio;
+
+                soundEffectSource.play
+
+
+
+
+        */
+                // runs the Interact() method in the _currentTarget
                 _currentTarget.Interact(this);
                 return;
+
+
+
             }
+
+
+
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
