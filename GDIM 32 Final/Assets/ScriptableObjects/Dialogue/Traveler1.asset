@@ -15,13 +15,10 @@ MonoBehaviour:
   _lines:
   - _speaker: 2
     _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
-    _dialogueText: Traveler is Talking
-  - _speaker: 1
-    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
-    _dialogueText: Witch is Talking
-  - _speaker: 1
-    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
-    _dialogueText: Witch Is still Talking
+    _dialogueText: I feel like a berry tart right now...
+  - _speaker: 2
+    _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+    _dialogueText: Hurry up and make it for me or you won't see the Sun again!
   _playerReplyOptions: []
   _nextNode: []
   _setQuestState:
