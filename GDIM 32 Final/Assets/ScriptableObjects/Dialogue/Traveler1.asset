@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - _speaker: 2
-    _portrait: {fileID: 21300000, guid: 664dd2606a1ad654c91e4a8e3c15a66b, type: 3}
+    _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
     _dialogueText: Traveler is Talking
   - _speaker: 1
-    _portrait: {fileID: 0}
+    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
     _dialogueText: Witch is Talking
   - _speaker: 1
-    _portrait: {fileID: 0}
+    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
     _dialogueText: Witch Is still Talking
   _playerReplyOptions: []
   _nextNode: []
+  _setQuestState:
+    _questStateToSet: 0
+    _questToSet: {fileID: 0}
+  item: {fileID: 0}

@@ -11,7 +11,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private Quest _currentQuest;
 
-    [SerializeField] private DialogueNode dialogue;
+    private DialogueNode dialogue;
     public string PromptText => promptText;
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;

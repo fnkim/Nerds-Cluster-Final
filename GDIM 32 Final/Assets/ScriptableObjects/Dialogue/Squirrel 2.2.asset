@@ -10,41 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: Squirrel1
+  m_Name: Squirrel 2.2
   m_EditorClassIdentifier: 
   _lines:
   - _speaker: 0
-    _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
-    _dialogueText: Welcome to the Squirrel's Stash! We probably have what you're
-      looking for.
-  - _speaker: 1
-    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
-    _dialogueText: Can I have some flour?
+    _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+    _dialogueText: I told you already! I can't give you flour unless you have special
+      access!
   - _speaker: 0
     _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-    _dialogueText: 'Sorry, flour''s off-limits for now. '
-  - _speaker: 0
-    _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-    _dialogueText: This valuable product has been scarce since the wheat famine,
-      so you'll need special access.
+    _dialogueText: You don't have that!
   _playerReplyOptions:
-  - '"Give me flour."'
-  - '"What''s it like being a squirrel?"'
+  - How did you make your tail so fluffy?
+  - Who cares about special access? I need flour now!
   _nextNode:
   - friendshipCheck:
       _friendship: {fileID: 0}
       _friendshipCondition: 0
     friendshipChange:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
-      _operation: 2
-    _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
+      _operation: 1
+    _nextDialogueNode: {fileID: 11400000, guid: 01fe1600b9c76c043b225158d45cbf94, type: 2}
   - friendshipCheck:
       _friendship: {fileID: 0}
       _friendshipCondition: 0
     friendshipChange:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
-      _operation: 1
-    _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
+      _operation: 2
+    _nextDialogueNode: {fileID: 11400000, guid: 01fe1600b9c76c043b225158d45cbf94, type: 2}
   _setQuestState:
     _questStateToSet: 0
     _questToSet: {fileID: 0}
