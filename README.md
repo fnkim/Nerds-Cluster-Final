@@ -45,3 +45,4 @@ Put your individual final Devlog here.
 
 ## Open-Source Assets
 - [BGM: "After-Five" - Yuhei Komatsu](https://dova-s.jp/en/bgm/detail/22141)
+- [Berry Collection SFX: pop_4 - Chequered Ink](https://ci.itch.io/400-sounds-pack)

@@ -22,7 +22,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private IInteractable _currentTarget;
     public static PlayerInteractor Instance {get; private set; }
-    public Witch Player {get; set;}
+    public Witch Player {get; private set;}
 
     public delegate void InteractorDelegate();
 
