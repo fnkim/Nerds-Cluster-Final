@@ -10,7 +10,12 @@ public class Witch : MonoBehaviour
 
 
     [SerializeField] private CharacterController controller;
-    [SerializeField] private float speed = 6f;
+
+    private float speed;
+    [SerializeField] private float _walkSpeed = 6f;
+
+    [SerializeField] private float _runSpeed = 8f;
+
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] public Animator animator;
     float turnSmoothVelocity;
@@ -75,6 +80,21 @@ public class Witch : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
             {
+                //if shift is being pressed, run, if not, walk
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = _runSpeed;
+            }
+            else
+            {
+                speed = _walkSpeed;
+            }            
+
+
+
+
+
+
                 float targetAngle = Mathf.Atan2(- direction.x, - direction.z) * Mathf.Rad2Deg;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);

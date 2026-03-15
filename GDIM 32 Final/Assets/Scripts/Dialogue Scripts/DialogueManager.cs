@@ -9,24 +9,36 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
     [SerializeField] private DialogueBubble _dialogue;
 
-    private DialogueNode _currentNode;
-
-    private NextNode _nextNode;
-
     [SerializeField] PlayerInteractor interactor;
 
-    
-
-
-    private int _currentLine;
-
     public bool IsDialogueActive => _currentNode != null;
-    
-    private bool _waitingForPlayerResponse;
-    
+       
     [SerializeField] private Image _portraitUI;
 
 
+
+// VARIABLES THAT KEEP TRACK OF DIALOGUE STUFF
+    // Sets the current dialogue node
+    private DialogueNode _currentNode;
+
+
+    // variable that holds the NextNode
+    private NextNode _nodeToGoTo;
+
+    // Bool that checks whether the starting dialogue lines are over or not
+    private bool _dialogueOver;
+
+    // integer for current line
+    private int _currentLine;
+
+    //variable for length of the current array of lines
+    private int _lengthOfArray;
+
+    // variable for the current DialogueData
+    private DialogueData _currentData;
+
+    // bool for whether it is waiting for the player to click a choice
+    private bool _waitingForPlayerResponse;
 
 
 
@@ -41,9 +53,16 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueNode asset)
     {
         _currentNode = asset;
-        //sets current line to -1 so that when it advances it gets set to 0
         _currentLine = 0;
-        Advance();
+        
+        //sets up the node stuff with the current node's data.
+        // read the comments i left on SetupNode()
+        SetupNode(_currentNode);
+        Debug.Log(_currentNode);
+        Debug.Log(_currentData);
+        //advances with current data
+        Advance(_currentData);
+
     }
 
     private void Update ()
@@ -51,16 +70,53 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentNode == null) return;
         
-        //checks if the typewriter effect is going
+        
+        TypeWriter();
+
+    }
+
+
+    private void TypeWriter()
+    {
+
+        
+        // if the typing effect has stopped
         if (!_dialogue.IsTyping)
         {
             // if space or mouse button click has been pressed once
             if(!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                Advance();
+                if (_dialogueOver)
+                {
+                    // if the current line int hasn't gone over the array length and if the current node has lines
+                    if (_currentLine < _lengthOfArray)
+                    {
+                        _currentData = _nodeToGoTo.extraLines[_currentLine];
+                    }
+                    else
+                    {
+                        _currentData = null;
+                    }
+                }
+                //if the starting lines are still going
+                else
+                {
+                    // if the current line int hasn't gone over the array length and if the current node has lines
+                    if (_currentLine < _lengthOfArray)
+                    {
+                        //sets currentData to the current node's current line (which is element 0)
+                        _currentData = _currentNode._lines[_currentLine];
+                    }
+                    else
+                    {
+                        _currentData = null;
+                    }
+                }
+
+                Advance(_currentData);
             }
         }
-        // if the typewriter effect has stopped
+        // if the typewriter effect is still going
         else
         {
             //if space or mousebutton click is being held
@@ -74,36 +130,47 @@ public class DialogueManager : MonoBehaviour
                 _dialogue.speedUpText = false;
             }            
         }
-
-
-
-
-
-
     }
 
 
-    public void Advance()
+    public void Advance(DialogueData _dialogueData)
     {
-    /*Basically there is a ScriptableObject called DialogueNode which contains a list of DialogueData, which
-    is a class that contains the dialogue text and the speaker enum. The line below grabs the Dialogue Data
-    info from the current node and current line.
-    */
-
-
-
+        // if there's no currentNode, return
         if (_currentNode == null) return;
 
-        if (_currentLine < _currentNode._lines.Length)
+    // CHANGES QUESTS AND ITEMS
+
+        //if there's an item in the inspector
+        if (_currentNode.item != null)
         {
-            DialogueData _dialogueData = _currentNode._lines[_currentLine];
+            //grab the inventory
+            Inventory inv = interactor.GetComponent<Inventory>();
+            //add the item to the inventory
+            inv.Add(_currentNode.item, 1);
+        }
+
+        //If the set quest state action has something in it
+        if (_currentNode._setQuestState._questStateToSet != QuestState.Null)
+        {
+            //Sets the _questToSet's Quest State to _questStateToSet
+            _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
+
+        } 
 
 
-            //this grabs the enum for who's the speaker from the dialogue data in the dialoguenode list
-            var _currentSpeaker = _dialogueData._speaker;
-            //I'm gonna implement name stuff
+
+    // ADVANCES DIALOGUE
 
 
+
+        //if there's nothing in the current data, advance after lines
+        if (_currentData == null)
+        {
+            AdvanceAfterLines();
+        }
+        //if the current line int is less than _lengthOfArray
+        else if(_currentLine < _lengthOfArray)
+        {
             _dialogue.ShowDialogue(_dialogueData._dialogueText);
             if (_dialogueData._portrait != null)
             {
@@ -115,62 +182,77 @@ public class DialogueManager : MonoBehaviour
             }
             _currentLine++;
         }
-        else if (_currentNode._playerReplyOptions != null && _currentNode._playerReplyOptions.Length > 0)
-        {
-            //show player options
-            _waitingForPlayerResponse = true;
-            _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
-
-        } 
-        
-        //If the set quest state action has something in it
-        else if (_currentNode._setQuestState._questStateToSet != QuestState.Null)
-        {
-            //Sets the _questToSet's Quest State to _questStateToSet
-            _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
-            EndDialogue();
-
-        } 
-        //if there's an item in the inspector
-        
-        else if (_currentNode.item != null)
-        {
-            //grab the inventory
-            Inventory inv = interactor.GetComponent<Inventory>();
-            //add the item to the inventory
-            inv.Add(_currentNode.item, 1);
-            EndDialogue();
-        }
-        //if everything else is done
         else
         {
-            //if there are any nodes in the current node's list of next nodes
-            if (_currentNode._nextNode != null)
-            {
-                //cycle through the list of next nodes
-                foreach(NextNode _nextNode in _currentNode._nextNode)
-                {
-                    //if one of them has a friendship check
-                    if (_nextNode.friendshipCheck != null)
-                    {
-                        //there's probably a better way to do this but basically, this checks for if the friendship level is >= the friendship check's required friendship level
-                        if (_nextNode.friendshipCheck._friendship.FriendshipLevel >= _nextNode.friendshipCheck._friendshipCondition)
-                        {
-                            _currentNode = _nextNode._nextDialogueNode;
-                        }
-                        else
-                        {
-                            EndDialogue();
-                        }
-                        //
+            AdvanceAfterLines();
+        }
 
-                    }
-                }            
+    }
+
+
+    private void AdvanceAfterLines()
+    {
+        //basically, if the dialogue node hasn't progressed onto the extra lines yet
+        if(_dialogueOver == false)
+        {
+            //if there are reply options
+            if (_currentNode._playerReplyOptions.Length != 0)
+                {
+                    //show player options
+                    _waitingForPlayerResponse = true;
+                    _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+
+                }
+            else
+                {
+                    //if there are any nodes in the current node's list of next nodes
+                    if (_currentNode._nextNode.Length != 0)
+                    
+                        {
+                            Debug.Log("There are next nodes");
+                            //cycle through the list of next nodes
+
+                            for (int i = 0; i < _currentNode._nextNode.Length; i++)
+                            {
+                                //if the index's friendship check has something in it
+                                if (_currentNode._nextNode[i].friendshipCheck._friendship != null)
+                                {
+                                    // checks for if current friendship level is >= the  required friendship level
+                                    if (_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel >= _currentNode._nextNode[i].friendshipCheck._friendshipCondition)
+                                    {
+                                        SelectedOption(i);
+                                    }
+                                }           
+                            }
+                        }
+                    EndDialogue();
+
+                }
+        }
+        //advance to the next node after the extra lines
+        else
+        {
+            // if the node to go to's next node has stuff in it
+            if (_nodeToGoTo._nextDialogueNode != null)
+            {
+                //sets the current node to the next node
+                _currentNode = _nodeToGoTo._nextDialogueNode;
+                //sets up the next node's array stuff and everything
+                SetupNode(_currentNode); 
+                //sets the node to go to variable to null to refresh it
+                _nodeToGoTo = null;
+                //advances with the current data
+                Advance(_currentData);
+            }
+            // if there is no next dialogue node
+            else
+            {
+                EndDialogue();
             }
 
-            //if no more lines left, close UI
-            EndDialogue();
         }
+
+
     }
 
     public void EndDialogue()
@@ -180,16 +262,25 @@ public class DialogueManager : MonoBehaviour
         _waitingForPlayerResponse = false;
         _dialogue.HideDialogue();
     }
+
+
+
+
     public void SelectedOption(int option)
     {
+        // sets variable to say the dialogue is over
+        _dialogueOver = true;
+
+        _waitingForPlayerResponse = false;
+        
         //Selects which node to go to. "nodeToGoTo" contains the next dialogue node and friendship variable modifiers
-        NextNode nodeToGoTo = _currentNode._nextNode[option];
+        _nodeToGoTo = _currentNode._nextNode[option];
 
         //friendship variable
-        FriendshipVariable friendshipVariable = nodeToGoTo.friendshipChange._friendship;
+        FriendshipVariable friendshipVariable = _nodeToGoTo.friendshipChange._friendship;
 
         //operation to change the friendship variable
-        OperationType operation = nodeToGoTo.friendshipChange._operation;
+        OperationType operation = _nodeToGoTo.friendshipChange._operation;
 
         if (friendshipVariable != null)
         {
@@ -209,12 +300,52 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-
+        // set current line int to 0
         _currentLine = 0;
-        _waitingForPlayerResponse = false;
+        
 
-        _currentNode = nodeToGoTo._nextDialogueNode;
+        //if the node to go to has extra lines
+        if (_nodeToGoTo.extraLines != null)
+        {
+            _lengthOfArray = _nodeToGoTo.extraLines.Length;
+            // set current dialogue data to the next node to go to's 0th element extra line
+            _currentData = _nodeToGoTo.extraLines[_currentLine];            
+        }
+        //if the node to go to doesn't have extra lines
+        else
+        {
+            //set current node to the next dialogue node of _nodeToGoTo
+            _currentNode = _nodeToGoTo._nextDialogueNode;
+            SetupNode(_currentNode);
+        }
+        
 
-        Advance();
+        //advance line with the current data
+        Advance(_currentData);
+    }
+
+
+    //sets up the next node. This means setting up the length of array and current data
+    private void SetupNode(DialogueNode node)
+    {
+        _dialogueOver = false;
+        // if the current node's lines array has more than 0 elements (basically, if it has literally anything in it)
+        if (node._lines.Length != 0)
+        {
+            _currentLine = 0;
+            //sets up length of array
+            _lengthOfArray = node._lines.Length;
+            //sets currentData (which is element 0) of _currentNode
+            _currentData = node._lines[_currentLine];
+            //turn off dialogue over to start over
+        }
+        // however, if the current node's lines array has nothing in it
+        else
+        {
+            // there is no current data. this means when the code advances, it immediately moves onto the advance after lines part
+            _currentData = null;
+        }
     }
 }
+
+

@@ -13,18 +13,14 @@ MonoBehaviour:
   m_Name: Squirrel1
   m_EditorClassIdentifier: 
   _lines:
-  - _speaker: 0
-    _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+  - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
     _dialogueText: Welcome to the Squirrel's Stash! We probably have what you're
       looking for.
-  - _speaker: 1
-    _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
+  - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
     _dialogueText: Can I have some flour?
-  - _speaker: 0
-    _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+  - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
     _dialogueText: 'Sorry, flour''s off-limits for now. '
-  - _speaker: 0
-    _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+  - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
     _dialogueText: This valuable product has been scarce since the wheat famine,
       so you'll need special access.
   _playerReplyOptions:
@@ -37,6 +33,12 @@ MonoBehaviour:
     friendshipChange:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
       _operation: 2
+    extraLines:
+    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+      _dialogueText: I told you already! I can't give you flour unless you have special
+        access.
+    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+      _dialogueText: You don't have that!
     _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
   - friendshipCheck:
       _friendship: {fileID: 0}
@@ -44,6 +46,13 @@ MonoBehaviour:
     friendshipChange:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
       _operation: 1
+    extraLines:
+    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+      _dialogueText: Good question, no one's really asked that.
+    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+      _dialogueText: But I'm glad you did!
+    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+      _dialogueText: It feels nice being a squirrel. I love climbing trees!
     _nextDialogueNode: {fileID: 11400000, guid: 6b3bd9278fdf4a046a323544068af915, type: 2}
   _setQuestState:
     _questStateToSet: 0

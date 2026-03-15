@@ -17,6 +17,9 @@ public class NextNode
     [Header("Leave blank if not applicable.")]
     public FriendshipChange friendshipChange;
 
+    [Header("Extra Lines at the end")]
+    [Header("Leave blank if not applicable.")]
+    public DialogueData[] extraLines;
 
     [Header("Choose the next dialogue node.")]
     

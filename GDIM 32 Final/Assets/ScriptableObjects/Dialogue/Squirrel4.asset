@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: Squirrel3
+  m_Name: Squirrel4
   m_EditorClassIdentifier: 
   _lines: []
   _playerReplyOptions:
-  - Squirrels drive me nuts!
-  - What made you want to come to Candyland?
+  - What's it like having nuts for brains?
+  - What's your favorite animal in Candyland?
   _nextNode:
   - friendshipCheck:
       _friendship: {fileID: 0}
@@ -25,12 +25,11 @@ MonoBehaviour:
       _operation: 2
     extraLines:
     - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: Huh?
+      _dialogueText: What?
     - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: You're such an acornball.
-    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: Scurry off.
-    _nextDialogueNode: {fileID: 11400000, guid: dc7633d5c913f734c82c88dfb22740cc, type: 2}
+      _dialogueText: Just because I'm a squirrel doesn't mean I'm only nuts about
+        nuts!
+    _nextDialogueNode: {fileID: 0}
   - friendshipCheck:
       _friendship: {fileID: 0}
       _friendshipCondition: 0
@@ -39,13 +38,9 @@ MonoBehaviour:
       _operation: 1
     extraLines:
     - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
-      _dialogueText: Hm...
-    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: I heard Candyland has a lot of interesting creatures.
-    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
-      _dialogueText: I wanted to see for myself.
-    _nextDialogueNode: {fileID: 11400000, guid: dc7633d5c913f734c82c88dfb22740cc, type: 2}
+      _dialogueText: Oh! Well...
+    _nextDialogueNode: {fileID: 11400000, guid: 5d870d1a81acebb4f8e789db786ed82a, type: 2}
   _setQuestState:
-    _questStateToSet: 0
-    _questToSet: {fileID: 0}
+    _questStateToSet: 2
+    _questToSet: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
   item: {fileID: 0}

@@ -249,7 +249,7 @@ MonoBehaviour:
   - questStateCondition: 1
     dialogueToPlay: {fileID: 11400000, guid: 15669038eb2ceee4aa09f15af0cfcf8e, type: 2}
   - questStateCondition: 2
-    dialogueToPlay: {fileID: 11400000, guid: 838f30092a75bca45b97d12775c42e06, type: 2}
+    dialogueToPlay: {fileID: 11400000, guid: 72870277429bda94493a498cd9b08010, type: 2}
   - questStateCondition: 3
     dialogueToPlay: {fileID: 11400000, guid: 57945b2c06b57204f8e456926c70c043, type: 2}
   _currentQuest: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
@@ -5519,7 +5519,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 656337099}
-  speed: 13
+  _walkSpeed: 12
+  _runSpeed: 18
   turnSmoothTime: 0.1
   animator: {fileID: 2039391485}
 --- !u!82 &656337105

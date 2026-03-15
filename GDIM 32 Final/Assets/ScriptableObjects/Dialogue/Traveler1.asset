@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Traveler1
   m_EditorClassIdentifier: 
   _lines:
-  - _speaker: 2
-    _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
-    _dialogueText: I feel like a berry tart right now...
-  - _speaker: 2
-    _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+  - _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+    _dialogueText: I feel like eating a berry tart right now...
+  - _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
     _dialogueText: Hurry up and make it for me or you won't see the Sun again!
   _playerReplyOptions: []
   _nextNode: []

@@ -31,6 +31,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
         
         Debug.Log($"Interacting with NPC: {name}");
+        Debug.Log(dialogue);
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 
