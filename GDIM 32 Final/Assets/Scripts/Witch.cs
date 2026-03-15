@@ -8,18 +8,15 @@ public class Witch : MonoBehaviour
 {
     WitchState _currentActivity;
 
-    ItemSound itemSound;
 
     [SerializeField] private CharacterController controller;
     [SerializeField] private float speed = 6f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] public Animator animator;
-    [SerializeField] private AudioSource berry;
     float turnSmoothVelocity;
     void Start()
     {
         PlayerInteractor.Instance.PickupCollectable += Pickup;
-        PlayerInteractor.Instance.PickupCollectable += CollectSound;
     }
 
     // Update is called once per frame
@@ -55,29 +52,6 @@ public class Witch : MonoBehaviour
             default:
                 break;
         }
-    }
-
-      void CollectSound()
-    {
-        switch (itemSound)
-        {
-            case ItemSound.Berry:
-                PlayBerrySound();
-                break;
-
-            case ItemSound.Worm:
-         //     PlayWormSound();
-                break;
-            
-            case ItemSound.Tree:
-         //      PlayTreeSound();
-                break;
-        }
-    }
-
-    private void PlayBerrySound()
-    {
-        berry.Play();
     }
 
     private void Idle()

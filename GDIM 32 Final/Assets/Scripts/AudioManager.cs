@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioManager : MonoBehaviour
+{
+    ItemSound itemSound;
+    [SerializeField] private AudioSource berry;
+    [SerializeField] private AudioSource worm;
+    void Start()
+    {
+        PlayerInteractor.Instance.PickupCollectable += CollectSound;
+    }
+
+    void Update()
+    {
+        
+    }
+
+ void CollectSound()
+    {
+        switch (itemSound)
+        {
+            case ItemSound.Berry:
+                PlayBerrySound();
+                break;
+
+            case ItemSound.Worm:
+                PlayWormSound();
+                break;
+            
+            case ItemSound.Tree:
+         //      PlayTreeSound();
+                break;
+            
+            default:
+                break;
+        }
+    }
+
+    private void PlayBerrySound()
+    {
+        berry.Play();
+        Debug.Log("Berry Sound");
+    }
+
+    private void PlayWormSound()
+    {
+        worm.Play();
+        Debug.Log("Worm Sound");
+    }
+
+
+}

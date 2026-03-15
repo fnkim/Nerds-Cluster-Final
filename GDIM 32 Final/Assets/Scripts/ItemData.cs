@@ -12,8 +12,6 @@ public class ItemData : ScriptableObject
     public string displayName;
     public Sprite icon;
     public bool stackable = true;
-
     public ItemSound itemSound;
-
     //enum for which item
 }
