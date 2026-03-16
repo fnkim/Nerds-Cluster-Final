@@ -2623,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &220190278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4788,7 +4788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &458934484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7481,7 +7481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 171.45628}
+  m_AnchoredPosition: {x: 0, y: 181}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762416433
@@ -14771,7 +14771,6 @@ MonoBehaviour:
   ovenPlayerInventoryUI: {fileID: 1811904375}
   ovenInventoryUI: {fileID: 1676582889}
   bakeButton: {fileID: 336975800}
-  progressBar: {fileID: 0}
   recipe: {fileID: 11400000, guid: 15830980a90d0dd48a5c24fef3da2a65, type: 2}
   audioSource: {fileID: 0}
   bakeCompleteSfx: {fileID: 0}
@@ -16630,7 +16629,7 @@ RectTransform:
   m_GameObject: {fileID: 1676582887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.264845, y: 0.8051515, z: 1}
+  m_LocalScale: {x: 0.264845, y: 0.7653287, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6579659}
@@ -18123,7 +18122,7 @@ RectTransform:
   m_GameObject: {fileID: 1811904371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.264845, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.264845, y: 0.5653939, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 202646943}
@@ -18132,7 +18131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -254, y: -47.000015}
+  m_AnchoredPosition: {x: -254, y: -44}
   m_SizeDelta: {x: 0, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811904373
