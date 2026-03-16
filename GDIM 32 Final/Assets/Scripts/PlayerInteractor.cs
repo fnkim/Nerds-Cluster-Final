@@ -12,8 +12,6 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private InteractPromptUI promptUI;
     [SerializeField] private bool drawDebugGizmos = true;
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private GameObject pressTabPanel;
 
     [SerializeField] private AudioSource soundEffectSource;
     private AudioClip _soundEffectClip;
@@ -131,12 +129,6 @@ public class PlayerInteractor : MonoBehaviour
 
 
 
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-            Time.timeScale = inventoryPanel.activeSelf ? 0f : 1f;
-            pressTabPanel.SetActive(!pressTabPanel.activeSelf);
         }
     }
 

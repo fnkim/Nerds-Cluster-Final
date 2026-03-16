@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Red Worm
   m_EditorClassIdentifier: 
   displayName: Red Worm
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0b6b0c21ceba15245818e5b6d19dd051, type: 3}
   stackable: 1
   itemSound: 1

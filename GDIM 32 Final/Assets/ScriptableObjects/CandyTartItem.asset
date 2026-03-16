@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7272f234bbd61e844ab0c43dce6203a2, type: 3}
   m_Name: CandyTartItem
   m_EditorClassIdentifier: 
-  displayName: 
-  icon: {fileID: 0}
+  displayName: Candy Tart
+  icon: {fileID: 21300000, guid: 46449f923d734fa41bec70ef03293908, type: 3}
   stackable: 1
   itemSound: 0
