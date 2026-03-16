@@ -69,7 +69,6 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueNode asset)
     {
         _currentNode = asset;
-        _currentLine = 0;
         
         //sets up the node stuff with the current node's data.
         // read the comments i left on SetupNode()
@@ -151,26 +150,6 @@ public class DialogueManager : MonoBehaviour
     {
         // if there's no currentNode, return
         if (_currentNode == null) return;
-
-    // CHANGES QUESTS AND ITEMS
-
-        //if there's an item in the inspector
-        if (_currentNode.item != null)
-        {
-            //grab the inventory
-            Inventory inv = interactor.GetComponent<Inventory>();
-            //add the item to the inventory
-            inv.Add(_currentNode.item, 1);
-        }
-
-        //If the set quest state action has something in it
-        if (_currentNode._setQuestState._questStateToSet != QuestState.Null)
-        {
-            //Sets the _questToSet's Quest State to _questStateToSet
-            _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
-
-        } 
-
 
 
     // ADVANCES DIALOGUE
@@ -351,6 +330,26 @@ public class DialogueManager : MonoBehaviour
     //sets up the next node. This means setting up the length of array and current data
     private void SetupNode(DialogueNode node)
     {
+        // CHANGES QUESTS AND ITEMS
+
+        //if there's an item in the inspector
+        if (_currentNode.item != null)
+        {
+            //grab the inventory
+            Inventory inv = interactor.GetComponent<Inventory>();
+            //add the item to the inventory
+            inv.Add(_currentNode.item, 1);
+        }
+
+        //If the set quest state action has something in it
+        if (_currentNode._setQuestState._questStateToSet != QuestState.Null)
+        {
+            //Sets the _questToSet's Quest State to _questStateToSet
+            _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
+
+        } 
+
+
         _dialogueOver = false;
         // if the current node's lines array has more than 0 elements (basically, if it has literally anything in it)
         if (node._lines.Length != 0)
