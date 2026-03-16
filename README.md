@@ -33,7 +33,27 @@ The break-down activity did not help me much, since most of the work I've contri
 
 ## Final Submission
 ### Group Devlog
-Put your group Devlog here.
+Our game uses the three design patterns of the Model-View-Controller, a Singleton, and a Finite State Machine.
+
+
+1. MVC Pattern
+An example of the incorporation of the MVC pattern is in the game’s dialogue system. The dialogue system demonstrates the MVC concept by separating the visuals from the data from the logic. The dialogue system is composed of dialogue node ScriptableObjects, which contains the data (model). Each dialogue node contains the information needed to display the lines, the choices as a string array, and the next dialogue node corresponding to those choices.
+
+The DialogueManager class handles the logic (controller) of this system, which is decoupled from the dialogue node ScriptableObjects. The DialogueManager determines which lines play when, which choices correspond to which reply lines, and which dialogue node to go to next. For example, the method Advance(DialogueData _dialogueData) passes in the current dialogue data being used in order to determine how to handle the dialogue. This might be for the initial lines of a dialogue or for additional lines played after the next node has been selected and is adjusted with the variable _currentData. This method iterates through the dialogue lines until the int _currentLine exceeds the number of lines in the array,  at which point it runs the method AdvanceAfterLines(). AdvanceAfterLines() checks for various things and runs the logic of friendship checks, handling reply logic, and moving onto the next DialogueNode.
+
+The visuals (view) are also decoupled from the logic. One example of this is how portraits are handled in each dialogue node. Inside the DialogueNode ScriptableObject is the code "public DialogueData[] _lines;" which creates a section at the top of each dialogue node called "lines", an array that appears in the inspector. Elements can be added to the array there. An element contains a string for the dialogue as well as a portrait slot (this is done through a Serializable class). Sprites can be dragged into this slot in the inspector rather than being attached to the DialogueNode inherently. This means that the visuals are contained in a separate location, such as a portraits folder. In this way, the model, view, and controller are separated.
+
+Overall, this helped structure the project because the ScriptableObjects contained a useful and intuitive way of keeping track of the data without requiring our team from editing the scripts to change the dialogue. The controller handles the functions of the dialogue system separately, and visuals can be adjusted easily without affecting the other systems.
+
+
+2. Singleton Pattern
+Write about singleton here
+
+
+4. Finite State Machine Pattern
+Write about FSM here
+
+
 
 
 ### Team Member Name 1
