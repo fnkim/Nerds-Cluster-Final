@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] ItemSound itemSound;
     [SerializeField] private AudioSource berry;
     [SerializeField] private AudioSource worm;
+    [SerializeField] private AudioSource tree;
     void Start()
     {
         PlayerInteractor.Instance.PickupCollectable += CollectSound;
@@ -31,7 +32,7 @@ public class AudioManager : MonoBehaviour
                 break;
             
             case ItemSound.Tree:
-         //      PlayTreeSound();
+               PlayTreeSound();
                 break;
             
             default:
@@ -51,5 +52,10 @@ public class AudioManager : MonoBehaviour
         Debug.Log("Worm Sound");
     }
 
+    private void PlayTreeSound()
+    {
+        tree.Play();
+        Debug.Log("Tree Sound");
+    }
 
 }
