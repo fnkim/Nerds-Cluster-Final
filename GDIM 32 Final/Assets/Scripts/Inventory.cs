@@ -61,15 +61,17 @@ public class Inventory : MonoBehaviour
         return total >= amount;
     }
 
-    public void Remove(ItemData item, int amount)
+    public bool Remove(ItemData item, int amount)
     {
+        if (!Has(item, amount)) return false;
+
         foreach (var slot in _slots)
         {
             if (slot.item != item) continue;
 
-            int remove = Mathf.Min(slot.count, amount);
-            slot.count -= remove;
-            amount -= remove;
+            int removeAmount = Mathf.Min(slot.count, amount);
+            slot.count -= removeAmount;
+            amount -= removeAmount;
 
             if (slot.count <= 0)
                 slot.Clear();
@@ -79,5 +81,27 @@ public class Inventory : MonoBehaviour
         }
 
         OnInventoryChanged?.Invoke();
+        return true;
+    }
+    public InventorySlot GetSlot(int index)
+    {
+        if (index < 0 || index >= _slots.Count) return null;
+        return _slots[index];
+    }
+
+    public bool RemoveFromSlot(int index, int amount)
+    {
+        if (index < 0 || index >= _slots.Count) return false;
+
+        InventorySlot slot = _slots[index];
+        if (slot == null || slot.IsEmpty || slot.count < amount) return false;
+
+        slot.count -= amount;
+
+        if (slot.count <= 0)
+            slot.Clear();
+
+        OnInventoryChanged?.Invoke();
+        return true;
     }
 }

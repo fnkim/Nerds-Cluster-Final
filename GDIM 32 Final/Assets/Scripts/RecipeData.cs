@@ -7,6 +7,7 @@ public class RecipeData : ScriptableObject
 {
     public string recipeName;
     public ItemData result;
+    public int resultAmount = 1;
     public ItemRequirement[] requirements;
 }
 

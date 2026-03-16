@@ -8,10 +8,11 @@ public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text countText;
+    [SerializeField] private GameObject highlightObject;
 
     public void Bind(InventorySlot slot)
     {
-        if (slot.IsEmpty)
+        if (slot == null || slot.IsEmpty)
         {
             icon.enabled = false;
             countText.text = "";
@@ -20,7 +21,12 @@ public class InventorySlotUI : MonoBehaviour
 
         icon.enabled = true;
         icon.sprite = slot.item.icon;
-
         countText.text = slot.count > 1 ? $"x{slot.count}" : "";
+    }
+
+    public void SetHighlighted(bool highlighted)
+    {
+        if (highlightObject != null)
+            highlightObject.SetActive(highlighted);
     }
 }

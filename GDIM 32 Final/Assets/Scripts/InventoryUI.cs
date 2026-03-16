@@ -13,24 +13,85 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        int count = inventory.Slots.Count;
-        _slotUIs = new InventorySlotUI[count];
+        if (inventory == null) return;
 
-        for (int i = 0; i < count; i++)
+        if (_slotUIs == null || _slotUIs.Length != inventory.Slots.Count)
+        {
+            RebuildSlots();
+        }
+
+        inventory.OnInventoryChanged -= Refresh;
+        inventory.OnInventoryChanged += Refresh;
+
+        Refresh();
+    }
+
+    public void SetInventory(Inventory newInventory)
+    {
+        if (inventory != null)
+            inventory.OnInventoryChanged -= Refresh;
+
+        inventory = newInventory;
+
+        if (inventory == null) return;
+
+        if (_slotUIs == null || _slotUIs.Length != inventory.Slots.Count)
+        {
+            RebuildSlots();
+        }
+
+        inventory.OnInventoryChanged -= Refresh;
+        inventory.OnInventoryChanged += Refresh;
+
+        Refresh();
+    }
+
+    private void RebuildSlots()
+    {
+        foreach (Transform child in gridParent)
+            Destroy(child.gameObject);
+
+        _slotUIs = new InventorySlotUI[inventory.Slots.Count];
+
+        for (int i = 0; i < inventory.Slots.Count; i++)
         {
             var ui = Instantiate(slotPrefab, gridParent);
             _slotUIs[i] = ui;
         }
-
-        inventory.OnInventoryChanged += Refresh;
-        Refresh();
     }
 
-    private void Refresh()
+    public void Refresh()
     {
+        if (inventory == null || _slotUIs == null) return;
+
         for (int i = 0; i < _slotUIs.Length; i++)
         {
             _slotUIs[i].Bind(inventory.Slots[i]);
+        }
+    }
+
+    public RectTransform GetSlotRect(int index)
+    {
+        if (_slotUIs == null) return null;
+        if (index < 0 || index >= _slotUIs.Length) return null;
+
+        return _slotUIs[index].GetComponent<RectTransform>();
+    }
+
+    public void SetHighlight(int index, bool highlighted)
+    {
+        if (_slotUIs == null) return;
+        if (index < 0 || index >= _slotUIs.Length) return;
+
+        _slotUIs[index].SetHighlighted(highlighted);
+    }
+
+    public int SlotCount
+    {
+        get
+        {
+            if (_slotUIs == null) return 0;
+            return _slotUIs.Length;
         }
     }
 }
