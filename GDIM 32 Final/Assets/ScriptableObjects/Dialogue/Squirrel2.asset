@@ -28,8 +28,6 @@ MonoBehaviour:
     extraLines:
     - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
       _dialogueText: Easy! It's the almond oil shampoo I use!
-    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
-      _dialogueText: Easy! It's the almond oil shampoo I use!
     _nextDialogueNode: {fileID: 11400000, guid: 01fe1600b9c76c043b225158d45cbf94, type: 2}
   - friendshipCheck:
       _friendship: {fileID: 0}

@@ -26,12 +26,12 @@ public class DialogueBubble : MonoBehaviour
 
     public void ShowDialogue(string dialogue)
     {
-
-
         _npctext.text = dialogue;
         _npcDialogue.SetActive(true);
+        
 
         gameObject.SetActive(true);
+        
         _playerOptions.SetActive(false);
 
 
@@ -45,7 +45,7 @@ public class DialogueBubble : MonoBehaviour
 
     public void ShowPlayerOptions(string[] options)
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
 
         _npcDialogue.SetActive(false);
         _playerOptions.SetActive(true);

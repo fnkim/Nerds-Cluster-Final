@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
-  m_Name: SquirrelCheck
+  m_Name: AlternateCheckSquirrel
   m_EditorClassIdentifier: 
   _lines: []
   _playerReplyOptions: []
@@ -22,10 +22,18 @@ MonoBehaviour:
       _friendship: {fileID: 0}
       _operation: 0
     extraLines:
+    - _portrait: {fileID: 21300000, guid: a0c4f9dc8bea74c4cb9e751139fb19f3, type: 3}
+      _dialogueText: So, about that flour...
+    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+      _dialogueText: Oh. Hm.
+    - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+      _dialogueText: I guess you are kinda nice...
+    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
+      _dialogueText: Even though you were mean just now.
     - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
       _dialogueText: Well, there's this rare worm I've been looking for.
     - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: I hope I can catch it someday...
+      _dialogueText: If you can get it for me, I'll see what I can do.
     _nextDialogueNode: {fileID: 0}
   - friendshipCheck:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
@@ -34,8 +42,8 @@ MonoBehaviour:
       _friendship: {fileID: 0}
       _operation: 0
     extraLines:
-    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: Wait, why should I tell you?
+    - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
+      _dialogueText: About that flour...
     - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
       _dialogueText: Go climb up a tree or something, and leave me alone!
     _nextDialogueNode: {fileID: 0}

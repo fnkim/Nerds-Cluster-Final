@@ -29,7 +29,7 @@ MonoBehaviour:
     - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
       _dialogueText: Just because I'm a squirrel doesn't mean I'm only nuts about
         nuts!
-    _nextDialogueNode: {fileID: 0}
+    _nextDialogueNode: {fileID: 11400000, guid: 239a5175c50fb1d4191df632d0e989e2, type: 2}
   - friendshipCheck:
       _friendship: {fileID: 0}
       _friendshipCondition: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
       _operation: 1
     extraLines:
     - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
-      _dialogueText: Oh! Well...
+      _dialogueText: Oh!
     _nextDialogueNode: {fileID: 11400000, guid: 5d870d1a81acebb4f8e789db786ed82a, type: 2}
   _setQuestState:
     _questStateToSet: 2

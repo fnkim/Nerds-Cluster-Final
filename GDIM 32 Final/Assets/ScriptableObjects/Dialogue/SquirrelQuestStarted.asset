@@ -17,7 +17,7 @@ MonoBehaviour:
   _nextNode:
   - friendshipCheck:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
-      _friendshipCondition: 3
+      _friendshipCondition: 2
     friendshipChange:
       _friendship: {fileID: 0}
       _operation: 0

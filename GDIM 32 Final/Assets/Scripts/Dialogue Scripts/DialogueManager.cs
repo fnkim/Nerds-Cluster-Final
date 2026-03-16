@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+
+    
     public static DialogueManager Instance { get; private set; }
     [SerializeField] private DialogueBubble _dialogue;
 
@@ -172,6 +174,7 @@ public class DialogueManager : MonoBehaviour
         else if(_currentLine < _lengthOfArray)
         {
             _dialogue.ShowDialogue(_dialogueData._dialogueText);
+            
             if (_dialogueData._portrait != null)
             {
                 _portraitUI.sprite = _dialogueData._portrait;
@@ -197,38 +200,47 @@ public class DialogueManager : MonoBehaviour
         {
             //if there are reply options
             if (_currentNode._playerReplyOptions.Length != 0)
-                {
-                    //show player options
-                    _waitingForPlayerResponse = true;
-                    _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+            {
+                //show player options
+                _waitingForPlayerResponse = true;
+                _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
 
-                }
-            else
+            }
+            //if there are next nodes
+            else if (_currentNode._nextNode.Length != 0)            
+            {
+                //cycle through the list of next nodes
+                bool _friendshipConditionMet = false;
+
+                for (int i = 0; i < _currentNode._nextNode.Length; i++)
                 {
-                    //if there are any nodes in the current node's list of next nodes
-                    if (_currentNode._nextNode.Length != 0)
-                    
+                    Debug.Log(i);
+                    //if the index's friendship check has something in it
+                    if (_currentNode._nextNode[i].friendshipCheck._friendship != null)
+                    {
+                        // checks for if current friendship level is >= the  required friendship level
+                        if (_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel >= _currentNode._nextNode[i].friendshipCheck._friendshipCondition)
                         {
-                            Debug.Log("There are next nodes");
-                            //cycle through the list of next nodes
-
-                            for (int i = 0; i < _currentNode._nextNode.Length; i++)
-                            {
-                                //if the index's friendship check has something in it
-                                if (_currentNode._nextNode[i].friendshipCheck._friendship != null)
-                                {
-                                    // checks for if current friendship level is >= the  required friendship level
-                                    if (_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel >= _currentNode._nextNode[i].friendshipCheck._friendshipCondition)
-                                    {
-                                        SelectedOption(i);
-                                    }
-                                }           
-                            }
+                            _friendshipConditionMet = true;
+                            Debug.Log(_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel);
+                            Debug.Log(_currentNode._nextNode[i].friendshipCheck._friendshipCondition);
+                            SelectedOption(i);
+                            break;
                         }
-                    EndDialogue();
-
+                    }           
                 }
+                if (_friendshipConditionMet == false)
+                {
+                    EndDialogue();
+                }
+            }
+            //if there aren't next nodes
+            else
+            {
+                EndDialogue();
+            }
         }
+        
         //advance to the next node after the extra lines
         else
         {
@@ -305,7 +317,7 @@ public class DialogueManager : MonoBehaviour
         
 
         //if the node to go to has extra lines
-        if (_nodeToGoTo.extraLines != null)
+        if (_nodeToGoTo.extraLines.Length != 0)
         {
             _lengthOfArray = _nodeToGoTo.extraLines.Length;
             // set current dialogue data to the next node to go to's 0th element extra line
@@ -319,7 +331,6 @@ public class DialogueManager : MonoBehaviour
             SetupNode(_currentNode);
         }
         
-
         //advance line with the current data
         Advance(_currentData);
     }
