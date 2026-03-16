@@ -7915,6 +7915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaefe9dd59ff3c4cbe520a3b837dbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetSquirrelQuest: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
+  resetFriendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
   _dialogue: {fileID: 1437752280}
   interactor: {fileID: 656337101}
   _portraitUI: {fileID: 893727796}

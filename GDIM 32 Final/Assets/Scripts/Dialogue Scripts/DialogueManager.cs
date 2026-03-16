@@ -7,7 +7,21 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    
+    //resets quest stuff for playtesting
+    [SerializeField] private Quest resetSquirrelQuest;
+    [SerializeField] private FriendshipVariable resetFriendship;
+
+    void Start()
+    {
+        resetSquirrelQuest.QuestState = QuestState.NotStarted;
+        resetFriendship.FriendshipLevel = 0;
+        
+    }
+    //end of playtest stuff
+
+
+
+
     public static DialogueManager Instance { get; private set; }
     [SerializeField] private DialogueBubble _dialogue;
 
