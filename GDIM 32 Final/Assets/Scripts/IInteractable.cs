@@ -8,7 +8,6 @@ public interface IInteractable
     //Nothing needs to be set for the children since they alr inherit from monobehavior.
     // I'm tired so idk if this might have exceptions. Sorry if we gotta change it later.
     GameObject gameObject { get; }
-    string PromptText { get; }
     Transform PromptAnchor { get; }
     void Interact(PlayerInteractor interactor);
 }

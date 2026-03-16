@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPCInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string promptText = "[E] Talk";
 
   //This one sets up the list of quests that correspond with dialogue nodes.
     [SerializeField] private QuestToDialogue[] _questToDialogueList;
@@ -12,7 +11,6 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     [SerializeField] private Quest _currentQuest;
 
     private DialogueNode dialogue;
-    public string PromptText => promptText;
     [SerializeField] private Transform promptAnchor;
     public Transform PromptAnchor => promptAnchor;
     [SerializeField] private Animator animator;
@@ -33,6 +31,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         Debug.Log($"Interacting with NPC: {name}");
         Debug.Log(dialogue);
         DialogueManager.Instance.StartDialogue(dialogue);
+
     }
 
     void SelectDialogueNode(Quest _currentQuest)

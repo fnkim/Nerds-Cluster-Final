@@ -7,18 +7,20 @@ public class InteractPromptUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text interactPromptText;
 
+    [SerializeField] private GameObject interactPromptBubble;
+
     private Transform _target;
 
-    public void ShowPrompt(string text, Transform anchor)
+    public void ShowPrompt(Transform anchor)
     {
-        interactPromptText.text = text;
-        interactPromptText.gameObject.SetActive(true);
+        interactPromptText.text = "[E]";
+        interactPromptBubble.SetActive(true);
         _target = anchor;
     }
 
     public void HidePrompt()
     {
-        interactPromptText.gameObject.SetActive(false);
+        interactPromptBubble.SetActive(false);
         _target = null;
     }
 
@@ -27,6 +29,14 @@ public class InteractPromptUI : MonoBehaviour
         if (_target == null) return;
 
         Vector3 screenPos = Camera.main.WorldToScreenPoint(_target.position);
-        interactPromptText.transform.position = screenPos;
+        interactPromptBubble.transform.position = screenPos;
+
+        if (DialogueManager.Instance.IsDialogueActive)
+        {
+            HidePrompt();
+        }
+
+
+
     }
 }

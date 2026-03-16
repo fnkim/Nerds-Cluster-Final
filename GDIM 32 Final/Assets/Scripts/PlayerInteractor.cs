@@ -64,6 +64,7 @@ public class PlayerInteractor : MonoBehaviour
 
                 if (targetCollectable != null)
                 {
+                    PickingAction?.Invoke();
                     PickupCollectable?.Invoke(targetCollectable.item);
                 }
 
@@ -173,7 +174,7 @@ public class PlayerInteractor : MonoBehaviour
         _currentTarget = newTarget;
 
         if (_currentTarget != null)
-            promptUI.ShowPrompt(_currentTarget.PromptText, _currentTarget.PromptAnchor);
+            promptUI.ShowPrompt(_currentTarget.PromptAnchor);
         else
         {
             promptUI.HidePrompt();

@@ -17,7 +17,7 @@ MonoBehaviour:
     _dialogueText: Anything else?
   _playerReplyOptions:
   - How did you make your tail so fluffy?
-  - Who cares about special access? I need flour right now!
+  - Give me flour right now!
   _nextNode:
   - friendshipCheck:
       _friendship: {fileID: 0}

@@ -74,8 +74,6 @@ public class DialogueManager : MonoBehaviour
         //sets up the node stuff with the current node's data.
         // read the comments i left on SetupNode()
         SetupNode(_currentNode);
-        Debug.Log(_currentNode);
-        Debug.Log(_currentData);
         //advances with current data
         Advance(_currentData);
 
