@@ -24,9 +24,13 @@ public class PlayerInteractor : MonoBehaviour
     public static PlayerInteractor Instance {get; private set; }
     public Witch Player {get; private set;}
 
-    public delegate void InteractorDelegate();
+    public delegate void CollectableInteractorDelegate(ItemData itemData);
+    public delegate void Pickup();
 
-    public event InteractorDelegate PickupCollectable;
+    public event CollectableInteractorDelegate PickupCollectable;
+    public event Pickup PickingAction;
+
+    
 
     private void Awake()
     {
@@ -60,7 +64,7 @@ public class PlayerInteractor : MonoBehaviour
 
                 if (targetCollectable != null)
                 {
-                    PickupCollectable?.Invoke();
+                    PickupCollectable?.Invoke(targetCollectable.item);
                 }
 
                 /*

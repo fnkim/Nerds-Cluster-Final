@@ -21,7 +21,7 @@ public class Witch : MonoBehaviour
     float turnSmoothVelocity;
     void Start()
     {
-        PlayerInteractor.Instance.PickupCollectable += Pickup;
+        PlayerInteractor.Instance.PickingAction += Pickup;
     }
 
     // Update is called once per frame

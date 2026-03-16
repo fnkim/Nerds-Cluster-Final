@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    ItemSound itemSound;
+    [SerializeField] ItemSound itemSound;
     [SerializeField] private AudioSource berry;
     [SerializeField] private AudioSource worm;
     void Start()
@@ -17,8 +17,9 @@ public class AudioManager : MonoBehaviour
         
     }
 
- void CollectSound()
+ void CollectSound(ItemData collectedItem)
     {
+        itemSound = collectedItem.itemSound;
         switch (itemSound)
         {
             case ItemSound.Berry:

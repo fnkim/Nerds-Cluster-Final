@@ -4,7 +4,7 @@ public enum BushType { Blueberry, Strawberry, Lemon }
 
 public class Collectable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private ItemData item;
+    public ItemData item;
     [SerializeField] private int amount = 1;
 
     [SerializeField] private string promptText = "[E] Pick up";
@@ -40,6 +40,7 @@ public class Collectable : MonoBehaviour, IInteractable
         }
 
         inv.Add(item, amount);
+
 
         // Remove visuals
         if (visualToRemove != null)
