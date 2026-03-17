@@ -578,68 +578,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 383622836695058953, guid: 6a3c79a2f34014442a6f5c9c2ce6ee42, type: 3}
   m_PrefabInstance: {fileID: 830979580}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &52622293
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 680307528}
-    m_Modifications:
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 65.181854
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -41.126522
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.077964686
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.077964075
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7027972
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.70279396
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -527.33997
-      objectReference: {fileID: 0}
-    - target: {fileID: 3451771090180210705, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-      propertyPath: m_Name
-      value: Caramel Tree (14)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
---- !u!4 &52622294 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2642758833446312619, guid: c6fb4093ac7a56e43afea53c0196ec76, type: 3}
-  m_PrefabInstance: {fileID: 52622293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &58981695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,7 +6657,6 @@ Transform:
   - {fileID: 1714360566}
   - {fileID: 875150976}
   - {fileID: 1133336066}
-  - {fileID: 52622294}
   - {fileID: 1232299252}
   - {fileID: 558551869}
   - {fileID: 70818555}
@@ -9349,8 +9286,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 85.020966, y: 15.374671, z: 24.435112}
-  m_Center: {x: -28.562683, y: -7.1873355, z: -112.98947}
+  m_Size: {x: 66.52367, y: 15.374671, z: 20.525726}
+  m_Center: {x: -37.811333, y: -7.1873355, z: -114.94417}
 --- !u!4 &963218987
 Transform:
   m_ObjectHideFlags: 0
