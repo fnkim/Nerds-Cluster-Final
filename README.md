@@ -88,8 +88,13 @@ AdvanceAfterLines() checks if the bool _dialogueOver == false. _dialogueOver is 
 
 
 
-### Team Member Name 2
-Put your individual final Devlog here.
+### Landon Her
+Since the Check-In, I’ve contributed to the implementation of the player inventory, oven inventory, and their interactions. The player inventory systems I implemented included the Inventory, InventorySlot, and InventoryUI class. In the Inventory class I manage item storage using List<InventorySlot> and includes methods such as Add(ItemData item, int amount), Remove(ItemData item, int amount), and RemoveFromSlot(int index, int amount). I also implemented the OnInventoryChanged event to allow UI elements to automatically update when the inventory changes. The InventoryUI script instantiates slot prefabs I made in the scene and binds them to data using the Bind() method in InventorySlotUI, which updates icons and item counts. 
+
+Implementing the oven crafting system included the OvenMenuController and OvenInteractable scripts. The oven uses a separate inventory to store ingredients temporarily and allows the player to transfer items between inventories using methods like TransferToOven() and TransferToPlayer(). I implemented grid-based navigation using WASD by tracking indices such as _playerIndex and _ovenIndex, and highlighting selected slots through InventoryUI.SetHighlight(). I also added logic for selecting and activating the bake button using an enum-based selection system (OvenSelectionArea) and handling input through HandleTransferOrBake(). 
+
+Finally, I implemented the recipe validation system using the RecipeData ScriptableObject. The Bake() method checks if the oven inventory contains all required ingredients using HasRequiredIngredients(), removes them using ovenInventory.Remove(...), and adds the result item to the player inventory using playerInventory.Add(...).ovenInventory.Remove(...), and adds the result item to the player inventory using playerInventory.Add(...).
+
 ### Team Member Name 3
 Put your individual final Devlog here.
 
