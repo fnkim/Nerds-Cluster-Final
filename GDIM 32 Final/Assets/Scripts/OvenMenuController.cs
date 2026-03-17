@@ -18,7 +18,6 @@ public class OvenMenuController : MonoBehaviour
 
     [Header("Bake UI")]
     [SerializeField] private Button bakeButton;
-    [SerializeField] private Slider progressBar;
 
     [Header("Recipe")]
     [SerializeField] private RecipeData recipe;
@@ -41,12 +40,6 @@ public class OvenMenuController : MonoBehaviour
     {
         if (ovenMenuRoot != null)
             ovenMenuRoot.SetActive(false);
-
-        if (progressBar != null)
-        {
-            progressBar.gameObject.SetActive(false);
-            progressBar.value = 0f;
-        }
 
         if (bakeButton != null)
             bakeButton.onClick.AddListener(OnBakePressed);
@@ -272,28 +265,14 @@ public class OvenMenuController : MonoBehaviour
     private IEnumerator BakeRoutine()
     {
         _isBaking = true;
-
-        if (progressBar != null)
-        {
-            progressBar.gameObject.SetActive(true);
-            progressBar.value = 0f;
-        }
-
         float duration = 1.5f;
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
-
-            if (progressBar != null)
-                progressBar.value = elapsed / duration;
-
             yield return null;
         }
-
-        if (progressBar != null)
-            progressBar.value = 1f;
 
         foreach (var requirement in recipe.requirements)
             ovenInventory.Remove(requirement.item, requirement.amount);
@@ -306,12 +285,6 @@ public class OvenMenuController : MonoBehaviour
         RefreshAllInventoryViews();
 
         yield return new WaitForSecondsRealtime(0.2f);
-
-        if (progressBar != null)
-        {
-            progressBar.gameObject.SetActive(false);
-            progressBar.value = 0f;
-        }
 
         _isBaking = false;
         UpdateHighlights();
