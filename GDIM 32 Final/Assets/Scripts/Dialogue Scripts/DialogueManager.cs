@@ -101,47 +101,44 @@ public class DialogueManager : MonoBehaviour
         // if the typing effect has stopped
         if (!_dialogue.IsTyping)
         {
-            if (!_waitingForPlayerResponse)
+            // if space or mouse button click has been pressed once
+            if(!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+                if (_dialogueOver)
                 {
-                    if (_dialogueOver)
+                    // if the current line int hasn't gone over the array length and if the current node has lines
+                    if (_currentLine < _lengthOfArray)
                     {
-                        // if the current line int hasn't gone over the array length and if the current node has lines
-                        if (_currentLine < _lengthOfArray)
-                        {
-                            _currentData = _nodeToGoTo.extraLines[_currentLine];
-                        }
-                        else
-                        {
-                            _currentData = null;
-                        }
+                        _currentData = _nodeToGoTo.extraLines[_currentLine];
                     }
-                    //if the starting lines are still going
                     else
                     {
-                        // if the current line int hasn't gone over the array length and if the current node has lines
-                        if (_currentLine < _lengthOfArray)
-                        {
-                            //sets currentData to the current node's current line (which is element 0)
-                            _currentData = _currentNode._lines[_currentLine];
-                        }
-                        else
-                        {
-                            _currentData = null;
-                        }
+                        _currentData = null;
                     }
-                    Debug.Log("Advancing");
-                    Advance(_currentData);
                 }
+                //if the starting lines are still going
+                else
+                {
+                    // if the current line int hasn't gone over the array length and if the current node has lines
+                    if (_currentLine < _lengthOfArray)
+                    {
+                        //sets currentData to the current node's current line (which is element 0)
+                        _currentData = _currentNode._lines[_currentLine];
+                    }
+                    else
+                    {
+                        _currentData = null;
+                    }
+                }
+
+                Advance(_currentData);
             }
-            
         }
-        // if the typewriter effect is still going 
+        // if the typewriter effect is still going
         else
         {
             //if space or mousebutton click is being held
-            if(Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+            if(!_waitingForPlayerResponse && Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
                 //speeds up typewriter effect
                 _dialogue.speedUpText = true;
@@ -149,8 +146,8 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 _dialogue.speedUpText = false;
-            }                
-        }   
+            }            
+        }
     }
 
 
@@ -169,7 +166,7 @@ public class DialogueManager : MonoBehaviour
         {
             AdvanceAfterLines();
         }
-        //if the current line int is less than
+        //if the current line int is less than _lengthOfArray
         else if(_currentLine < _lengthOfArray)
         {
             
@@ -204,7 +201,6 @@ public class DialogueManager : MonoBehaviour
                 //show player options
                 _waitingForPlayerResponse = true;
                 _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
-                Debug.Log("Showing Options");
 
             }
             //if there are next nodes
@@ -222,14 +218,13 @@ public class DialogueManager : MonoBehaviour
                         // checks for if current friendship level is >= the  required friendship level
                         if (_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel >= _currentNode._nextNode[i].friendshipCheck._friendshipCondition)
                         {
-                            Debug.Log("Condition met");
                             _friendshipConditionMet = true;
                             Debug.Log(_currentNode._nextNode[i].friendshipCheck._friendship.FriendshipLevel);
                             Debug.Log(_currentNode._nextNode[i].friendshipCheck._friendshipCondition);
                             SelectedOption(i);
                             break;
                         }
-                    }        
+                    }           
                 }
                 if (_friendshipConditionMet == false)
                 {
@@ -256,7 +251,6 @@ public class DialogueManager : MonoBehaviour
                 //sets the node to go to variable to null to refresh it
                 _nodeToGoTo = null;
                 //advances with the current data
-                Debug.Log("Advancing with current data");
                 Advance(_currentData);
             }
             // if there is no next dialogue node
@@ -272,25 +266,10 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        if(_currentNode == null)
-        {
-            return;
-        }
-        if (_currentNode._setQuestState._questToSet != null && _currentNode != null)
-        {
-            QuestChanged?.Invoke(_currentNode._setQuestState._questToSet);
-        }
-        else
-        {
-            return;
-        }
-
         _currentNode = null;
         _currentLine = 0;
         _waitingForPlayerResponse = false;
         _dialogue.HideDialogue();
-
-
     }
 
 
@@ -298,7 +277,6 @@ public class DialogueManager : MonoBehaviour
 
     public void SelectedOption(int option)
     {
-        Debug.Log("Selected option" + option);
         // sets variable to say the dialogue is over
         _dialogueOver = true;
 
@@ -358,8 +336,6 @@ public class DialogueManager : MonoBehaviour
     //sets up the next node. This means setting up the length of array and current data
     private void SetupNode(DialogueNode node)
     {
-        Debug.Log("Node is being set up");
-        _currentLine = 0;
         // CHANGES QUESTS AND ITEMS
 
         //if there's an item in the inspector
@@ -377,6 +353,8 @@ public class DialogueManager : MonoBehaviour
             //Sets the _questToSet's Quest State to _questStateToSet
             _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
 
+            QuestChanged?.Invoke(_currentNode._setQuestState._questToSet);
+
         } 
 
 
@@ -384,6 +362,7 @@ public class DialogueManager : MonoBehaviour
         // if the current node's lines array has more than 0 elements (basically, if it has literally anything in it)
         if (node._lines.Length != 0)
         {
+            _currentLine = 0;
             //sets up length of array
             _lengthOfArray = node._lines.Length;
             //sets currentData (which is element 0) of _currentNode
@@ -393,8 +372,6 @@ public class DialogueManager : MonoBehaviour
         // however, if the current node's lines array has nothing in it
         else
         {
-            _lengthOfArray = 0;
-            Debug.Log(_lengthOfArray + " is the length of the array");
             // there is no current data. this means when the code advances, it immediately moves onto the advance after lines part
             _currentData = null;
         }
