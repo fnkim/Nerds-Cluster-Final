@@ -266,6 +266,14 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (_currentNode == null)
+        {
+            return;
+        }
+        if (_currentNode._setQuestState._questToSet != null)
+        {
+            QuestChanged?.Invoke(_currentNode._setQuestState._questToSet);
+        }
         _currentNode = null;
         _currentLine = 0;
         _waitingForPlayerResponse = false;
@@ -352,8 +360,6 @@ public class DialogueManager : MonoBehaviour
         {
             //Sets the _questToSet's Quest State to _questStateToSet
             _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
-
-            QuestChanged?.Invoke(_currentNode._setQuestState._questToSet);
 
         } 
 

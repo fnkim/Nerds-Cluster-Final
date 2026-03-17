@@ -26,6 +26,10 @@ public class OvenMenuController : MonoBehaviour
     [Header("Grid Settings")]
     [SerializeField] private int playerGridColumns = 4;
     [SerializeField] private int ovenGridColumns = 3;
+    [SerializeField] private PlayerMenuController _playerMenuController;
+
+
+    [SerializeField] private SetQuestState _setQuestState;
 
     private bool _isOpen;
     private int _playerIndex;
@@ -82,7 +86,8 @@ public class OvenMenuController : MonoBehaviour
     public void OpenMenu()
     {
         if (_isOpen) return;
-
+        _playerMenuController._inventoryDisabled = true;
+        _playerMenuController.pressTabPanel.SetActive(false);
         _isOpen = true;
         _playerIndex = 0;
         _ovenIndex = 0;
@@ -98,6 +103,8 @@ public class OvenMenuController : MonoBehaviour
 
     public void CloseMenu()
     {
+        _playerMenuController.pressTabPanel.SetActive(true);
+        _playerMenuController._inventoryDisabled = false;
         if (!_isOpen) return;
 
         _isOpen = false;
@@ -111,16 +118,16 @@ public class OvenMenuController : MonoBehaviour
 
     private void HandleNavigation()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             MoveVertical(-1);
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
             MoveVertical(1);
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
             MoveHorizontal(-1);
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
             MoveHorizontal(1);
     }
 
@@ -249,6 +256,8 @@ public class OvenMenuController : MonoBehaviour
         }
 
         playerInventory.Add(recipe.result, recipe.resultAmount);
+
+        _setQuestState._questToSet.QuestState = _setQuestState._questStateToSet;
 
         RefreshAllInventoryViews();
         UpdateHighlights();

@@ -8,13 +8,13 @@ public class PlayerMenuController : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private InventoryUI playerInventoryUI;
-    [SerializeField] private GameObject pressTabPanel;
+    public GameObject pressTabPanel;
 
     [Header("Controls")]
     [SerializeField] private int gridColumns = 4;
     [SerializeField] private KeyCode toggleKey = KeyCode.Tab;
     [SerializeField] private KeyCode deleteKey = KeyCode.O;
-
+    public bool _inventoryDisabled;
     private bool _isOpen;
     private int _selectedIndex;
 
@@ -33,23 +33,30 @@ public class PlayerMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(toggleKey))
+        if (!_inventoryDisabled)
         {
-            if (_isOpen)
-                CloseMenu();
-            else
-                OpenMenu();
+            if (Input.GetKeyDown(toggleKey))
+            {
+                if (_isOpen)
+                    CloseMenu();
+                else
+                    OpenMenu();
 
-            return;
+                return;
+            }  
+
+            if (!_isOpen)
+                return;
+
+            HandleNavigation();
+
+            if (Input.GetKeyDown(deleteKey))
+                DeleteSelectedItem();            
+                    
         }
 
-        if (!_isOpen)
-            return;
 
-        HandleNavigation();
 
-        if (Input.GetKeyDown(deleteKey))
-            DeleteSelectedItem();
     }
 
     private void OpenMenu()
