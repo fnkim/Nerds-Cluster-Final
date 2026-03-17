@@ -12,7 +12,8 @@ public class PlayerMenuController : MonoBehaviour
 
     [Header("Controls")]
     [SerializeField] private int gridColumns = 4;
-    [SerializeField] private KeyCode toggleKey = KeyCode.Tab;
+    private KeyCode escKey = KeyCode.Escape;
+    private KeyCode toggleKey = KeyCode.Tab;
     [SerializeField] private KeyCode deleteKey = KeyCode.O;
     public bool _inventoryDisabled;
     private bool _isOpen;
@@ -37,10 +38,15 @@ public class PlayerMenuController : MonoBehaviour
         {
             if (Input.GetKeyDown(toggleKey))
             {
+                if (!_isOpen)
+                    OpenMenu();
+
+                return;
+            }  
+            if (Input.GetKeyDown(escKey))
+            {
                 if (_isOpen)
                     CloseMenu();
-                else
-                    OpenMenu();
 
                 return;
             }  
@@ -94,16 +100,16 @@ public class PlayerMenuController : MonoBehaviour
 
     private void HandleNavigation()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             MoveVertical(-1);
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
             MoveVertical(1);
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
             MoveHorizontal(-1);
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
             MoveHorizontal(1);
     }
 

@@ -345,14 +345,20 @@ public class DialogueManager : MonoBehaviour
     private void SetupNode(DialogueNode node)
     {
         // CHANGES QUESTS AND ITEMS
-
-        //if there's an item in the inspector
-        if (_currentNode.item != null)
+        if (_currentNode.itemToRemove != null)
         {
             //grab the inventory
             Inventory inv = interactor.GetComponent<Inventory>();
             //add the item to the inventory
-            inv.Add(_currentNode.item, 1);
+            inv.Remove(_currentNode.itemToRemove, 1);
+        }
+        //if there's an item in the inspector
+        if (_currentNode.itemToAdd != null)
+        {
+            //grab the inventory
+            Inventory inv = interactor.GetComponent<Inventory>();
+            //add the item to the inventory
+            inv.Add(_currentNode.itemToAdd, 1);
         }
 
         //If the set quest state action has something in it

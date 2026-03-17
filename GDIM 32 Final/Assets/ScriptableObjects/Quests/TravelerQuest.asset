@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27fee1f3ea53b94d8813f2c2335447f, type: 3}
   m_Name: TravelerQuest
   m_EditorClassIdentifier: 
-  QuestState: 2
+  QuestState: 4

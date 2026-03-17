@@ -29,4 +29,5 @@ MonoBehaviour:
   _setQuestState:
     _questStateToSet: 5
     _questToSet: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
-  item: {fileID: 11400000, guid: 25d74fd4f12a189448305c9ebe57719e, type: 2}
+  itemToAdd: {fileID: 11400000, guid: 25d74fd4f12a189448305c9ebe57719e, type: 2}
+  itemToRemove: {fileID: 11400000, guid: e28a508dea4b5c145a5e2f52c3f8b655, type: 2}

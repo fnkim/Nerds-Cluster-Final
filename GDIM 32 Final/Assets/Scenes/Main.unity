@@ -4635,7 +4635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 1, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447647312
@@ -4658,7 +4658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[TAB] - Inventory'
+  m_text: '[tab] - Inventory'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0bd53954e6f05f4c9e23a6d7ec2d3a3, type: 2}
   m_sharedMaterial: {fileID: 4808079632763808375, guid: e0bd53954e6f05f4c9e23a6d7ec2d3a3, type: 2}
@@ -6488,7 +6488,6 @@ MonoBehaviour:
   playerInventoryUI: {fileID: 1946194376}
   pressTabPanel: {fileID: 77566515}
   gridColumns: 4
-  toggleKey: 9
   deleteKey: 111
   _inventoryDisabled: 0
 --- !u!1001 &666639009
@@ -8260,9 +8259,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TAB - Exit
+  m_text: 'Esc - Exit
 
-    WASD - Select
+    Arrow Keys - Select
 
     O - Drop Item'
   m_isRightToLeft: 0
@@ -8327,7 +8326,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 57.582714, y: 0, z: 0, w: 0}
+  m_margin: {x: 57.582714, y: 0, z: -54.98446, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -21539,7 +21538,7 @@ PrefabInstance:
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.data[1].dialogueToPlay
       value: 
-      objectReference: {fileID: 11400000, guid: 859ba41a56f0bec4880fe9427ec73999, type: 2}
+      objectReference: {fileID: 11400000, guid: ffcc78a0eae4a5143b38c3661561cd81, type: 2}
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.data[0].questStateCondition
       value: 2

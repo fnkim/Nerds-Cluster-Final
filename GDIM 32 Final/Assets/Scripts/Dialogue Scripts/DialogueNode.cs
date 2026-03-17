@@ -15,9 +15,10 @@ public class DialogueNode : ScriptableObject
     [Header("Leave blank if not applicable.")]
     public SetQuestState _setQuestState;
 
-    [Header("Adds an item to inventory")]
+    [Header("Adds or removes an item to inventory")]
     [Header("Leave blank if not applicable.")]
-    public ItemData item;
+    public ItemData itemToAdd;
+    public ItemData itemToRemove;
 
 
 
