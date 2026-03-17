@@ -85,9 +85,6 @@ Finally, I believe that the most important contribution to this dialogue system 
 
 AdvanceAfterLines() checks if the bool _dialogueOver == false. _dialogueOver is a bool that checks whether or not the current DialogueNode has completed its initial lines. This is important for dealing with the DialogueNode's extra lines. If _dialogueOver == false, it checks for reply options and shows them if there are any, and if there aren't any reply options, it iterates through any elements in the _nextNode array to see if a friendship condition has been met. If it has, it passes in that element into SelectedOption(intOption). SelectedOption() is also called when a reply choice button is pressed. It is a method that changes the Friendship if applicable and begins playing the extra lines if there are any. If there are extra lines, it sets up _currentData to use those and calls Advance() again. This is why I set up _lengthOfArray as its own variable that can be adjusted, as that way, Advance() can be used for both the extra lines and initial lines without needing another method. If there aren't extra lines, it calls SetupNode() and advances with the new node. Let's say that Advance() has gone through all the _extraLines. Then, when AdvanceAfterLines() is called again, _dialogueOver() would be True. And so the method moves onto the next Dialogue Node if one exists and calls EndDialogue() if not. EndDialogue resets all the variables like _cureentNode to null and hides the dialogue UI.
 
-
-
-
 ### Landon Her
 Since the Check-In, I’ve contributed to the implementation of the player inventory, oven inventory, and their interactions. The player inventory systems I implemented included the Inventory, InventorySlot, and InventoryUI class. In the Inventory class I manage item storage using List<InventorySlot> and includes methods such as Add(ItemData item, int amount), Remove(ItemData item, int amount), and RemoveFromSlot(int index, int amount). I also implemented the OnInventoryChanged event to allow UI elements to automatically update when the inventory changes. The InventoryUI script instantiates slot prefabs I made in the scene and binds them to data using the Bind() method in InventorySlotUI, which updates icons and item counts. 
 
@@ -95,9 +92,11 @@ Implementing the oven crafting system included the OvenMenuController and OvenIn
 
 Finally, I implemented the recipe validation system using the RecipeData ScriptableObject. The Bake() method checks if the oven inventory contains all required ingredients using HasRequiredIngredients(), removes them using ovenInventory.Remove(...), and adds the result item to the player inventory using playerInventory.Add(...).ovenInventory.Remove(...), and adds the result item to the player inventory using playerInventory.Add(...).
 
-### Team Member Name 3
-Put your individual final Devlog here.
+### Rebecca Feng
+Since the check-in, I have made more contributions to the programming aspects of the final project, which included the sound effects of each collectable item, which meant creating the AudioManager.cs script and having its CollectSound() method subscribe to the PickupCollectable event that was created in the PlayerInteractor.cs script. I had to create empty gameObjects that holds the AudioSources for the worm, tree sap, and berry collection sounds and hook them up into the AudioManager.cs script. I also added a switch statement that includes the cases for all types of collectables. I have also created methods (PlayBerrySound(), PlayWormSound(), and PlayTreeSound()) that will play each sound effect within each case of the switch statement.
+
+I have also made some more art assets, which includes the item icons for the worms, candy tart, tree sap, and berries. To implement them, I edited the Serialize Fields of the Sprite icons of each of the item's Scriptable Objects.
 
 ## Open-Source Assets
 - [BGM: "After-Five" - Yuhei Komatsu](https://dova-s.jp/en/bgm/detail/22141)
-- [Berry Collection SFX: pop_4 - Chequered Ink](https://ci.itch.io/400-sounds-pack)
+- [Berry, Worm, and tree Sap Collection SFX - Chequered Ink](https://ci.itch.io/400-sounds-pack)
