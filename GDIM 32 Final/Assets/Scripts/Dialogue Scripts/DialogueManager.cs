@@ -96,8 +96,7 @@ public class DialogueManager : MonoBehaviour
 
     private void TypeWriter()
     {
-
-        
+  
         // if the typing effect has stopped
         if (!_dialogue.IsTyping)
         {
@@ -140,6 +139,7 @@ public class DialogueManager : MonoBehaviour
             //if space or mousebutton click is being held
             if(!_waitingForPlayerResponse && Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
+                Debug.Log("Speeding up text");
                 //speeds up typewriter effect
                 _dialogue.speedUpText = true;
             }

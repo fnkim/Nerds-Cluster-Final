@@ -99,6 +99,10 @@ public class DialogueBubble : MonoBehaviour
             {
                 TimeBtwChars = 0.01f;
             }
+            else
+            {
+                TimeBtwChars = 0.03f;
+            }
 
             _npctext.maxVisibleCharacters++;
             _dialogueAudioSource.Play();
