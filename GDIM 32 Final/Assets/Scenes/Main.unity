@@ -9138,6 +9138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetSquirrelQuest: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
+  resetTravelerQuest: {fileID: 11400000, guid: 1303bc5ceace6fd478c2042941b3a9da, type: 2}
   resetFriendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
   _dialogue: {fileID: 1437752280}
   interactor: {fileID: 656337101}
@@ -21529,7 +21530,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1303bc5ceace6fd478c2042941b3a9da, type: 2}
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.data[0].dialogueToPlay
@@ -21540,12 +21541,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ffcc78a0eae4a5143b38c3661561cd81, type: 2}
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
+      propertyPath: _questToDialogueList.Array.data[2].dialogueToPlay
+      value: 
+      objectReference: {fileID: 11400000, guid: d3e6e775b1380dd42a856df9f5999d11, type: 2}
+    - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.data[0].questStateCondition
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: _questToDialogueList.Array.data[1].questStateCondition
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659394338290433331, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
+      propertyPath: _questToDialogueList.Array.data[2].questStateCondition
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2770435453041432219, guid: 677f7918533e3424baf772798cdf4e84, type: 3}
       propertyPath: m_Layer

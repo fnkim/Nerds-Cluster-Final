@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424c0678a43d97947abc23ce63f7e007, type: 3}
+  m_Name: TravelerHint
+  m_EditorClassIdentifier: 
+  _lines:
+  - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
+    _dialogueText: The squirrel trader won't give me the flour I need to bake the
+      tart...
+  - _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+    _dialogueText: Maybe you should eat the squirrel and take the flour.
+  - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
+    _dialogueText: ...
+  - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
+    _dialogueText: ...is that your only solution to everything?
+  - _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+    _dialogueText: Or maybe you can trade the flour for something rare?
+  - _portrait: {fileID: 21300000, guid: 0af4b1638c305fd41aa4f92f0894584b, type: 3}
+    _dialogueText: I don't care. Just get me the tart. I'm getting hungrier...
+  _playerReplyOptions: []
+  _nextNode: []
+  _setQuestState:
+    _questStateToSet: 2
+    _questToSet: {fileID: 11400000, guid: 1303bc5ceace6fd478c2042941b3a9da, type: 2}
+  itemToAdd: {fileID: 0}
+  itemToRemove: {fileID: 0}

@@ -37,17 +37,16 @@ MonoBehaviour:
     _nextDialogueNode: {fileID: 0}
   - friendshipCheck:
       _friendship: {fileID: 11400000, guid: c2550195db3b7d5409318e56dda3c314, type: 2}
-      _friendshipCondition: 0
+      _friendshipCondition: -100
     friendshipChange:
       _friendship: {fileID: 0}
       _operation: 0
     extraLines:
     - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
       _dialogueText: About that flour...
-    - _portrait: {fileID: 21300000, guid: b7ce11eefad2d7c4caf58710977a95a8, type: 3}
-      _dialogueText: Go climb up a tree or something, and leave me alone!
-    _nextDialogueNode: {fileID: 0}
+    _nextDialogueNode: {fileID: 11400000, guid: f910d4ec8e68be845b1f39065819aff6, type: 2}
   _setQuestState:
     _questStateToSet: 2
     _questToSet: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
-  item: {fileID: 0}
+  itemToAdd: {fileID: 0}
+  itemToRemove: {fileID: 0}

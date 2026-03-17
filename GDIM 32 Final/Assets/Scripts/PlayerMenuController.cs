@@ -34,6 +34,11 @@ public class PlayerMenuController : MonoBehaviour
 
     private void Update()
     {
+
+        if (DialogueManager.Instance.IsDialogueActive)
+        {
+            _inventoryDisabled = true;
+        }
         if (!_inventoryDisabled)
         {
             if (Input.GetKeyDown(toggleKey))

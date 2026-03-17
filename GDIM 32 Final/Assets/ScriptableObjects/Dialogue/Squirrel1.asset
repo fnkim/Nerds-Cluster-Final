@@ -57,4 +57,5 @@ MonoBehaviour:
   _setQuestState:
     _questStateToSet: 0
     _questToSet: {fileID: 0}
-  item: {fileID: 0}
+  itemToAdd: {fileID: 0}
+  itemToRemove: {fileID: 0}

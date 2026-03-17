@@ -9,11 +9,14 @@ public class DialogueManager : MonoBehaviour
 
     //resets quest stuff for playtesting
     [SerializeField] private Quest resetSquirrelQuest;
+    [SerializeField] private Quest resetTravelerQuest;
+    
     [SerializeField] private FriendshipVariable resetFriendship;
 
     void Start()
     {
         resetSquirrelQuest.QuestState = QuestState.NotStarted;
+        resetTravelerQuest.QuestState = QuestState.Started;
         resetFriendship.FriendshipLevel = 0;
         
     }
