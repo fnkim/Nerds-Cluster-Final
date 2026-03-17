@@ -18,21 +18,27 @@ public class OvenMenuController : MonoBehaviour
 
     [Header("Bake UI")]
     [SerializeField] private Button bakeButton;
+    [SerializeField] private GameObject bakeButtonHighlight;
 
     [Header("Recipe")]
     [SerializeField] private RecipeData recipe;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip bakeCompleteSfx;
 
     [Header("Grid Settings")]
     [SerializeField] private int playerGridColumns = 4;
     [SerializeField] private int ovenGridColumns = 3;
 
     private bool _isOpen;
-    private bool _isBaking;
-    private bool _selectingPlayerSide = true;
     private int _playerIndex;
     private int _ovenIndex;
+
+    private enum OvenSelectionArea
+    {
+        PlayerInventory,
+        OvenInventory,
+        BakeButton
+    }
+
+    private OvenSelectionArea _currentArea = OvenSelectionArea.PlayerInventory;
 
     public bool IsOpen => _isOpen;
 
@@ -40,9 +46,6 @@ public class OvenMenuController : MonoBehaviour
     {
         if (ovenMenuRoot != null)
             ovenMenuRoot.SetActive(false);
-
-        if (bakeButton != null)
-            bakeButton.onClick.AddListener(OnBakePressed);
 
         if (normalPlayerInventoryUI != null)
             normalPlayerInventoryUI.SetInventory(playerInventory);
@@ -54,11 +57,14 @@ public class OvenMenuController : MonoBehaviour
             ovenInventoryUI.SetInventory(ovenInventory);
 
         ClearAllHighlights();
+
+        if (bakeButton != null)
+            bakeButton.onClick.AddListener(Bake);
     }
 
     private void Update()
     {
-        if (!_isOpen || _isBaking)
+        if (!_isOpen)
             return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -70,7 +76,7 @@ public class OvenMenuController : MonoBehaviour
         HandleNavigation();
 
         if (Input.GetKeyDown(KeyCode.T))
-            TransferSelectedItem();
+            HandleTransferOrBake();
     }
 
     public void OpenMenu()
@@ -78,23 +84,14 @@ public class OvenMenuController : MonoBehaviour
         if (_isOpen) return;
 
         _isOpen = true;
-        _isBaking = false;
-        _selectingPlayerSide = true;
         _playerIndex = 0;
         _ovenIndex = 0;
+        _currentArea = OvenSelectionArea.PlayerInventory;
 
         if (ovenMenuRoot != null)
             ovenMenuRoot.SetActive(true);
 
-        if (normalPlayerInventoryUI != null)
-            normalPlayerInventoryUI.Refresh();
-
-        if (ovenPlayerInventoryUI != null)
-            ovenPlayerInventoryUI.Refresh();
-
-        if (ovenInventoryUI != null)
-            ovenInventoryUI.Refresh();
-
+        RefreshAllInventoryViews();
         Time.timeScale = 0f;
         UpdateHighlights();
     }
@@ -115,21 +112,21 @@ public class OvenMenuController : MonoBehaviour
     private void HandleNavigation()
     {
         if (Input.GetKeyDown(KeyCode.W))
-            MoveSelectionVertical(-1);
+            MoveVertical(-1);
 
         if (Input.GetKeyDown(KeyCode.S))
-            MoveSelectionVertical(1);
+            MoveVertical(1);
 
         if (Input.GetKeyDown(KeyCode.A))
-            MoveSelectionHorizontal(-1);
+            MoveHorizontal(-1);
 
         if (Input.GetKeyDown(KeyCode.D))
-            MoveSelectionHorizontal(1);
+            MoveHorizontal(1);
     }
 
-    private void MoveSelectionVertical(int direction)
+    private void MoveVertical(int direction)
     {
-        if (_selectingPlayerSide)
+        if (_currentArea == OvenSelectionArea.PlayerInventory)
         {
             int max = ovenPlayerInventoryUI != null ? ovenPlayerInventoryUI.SlotCount : 0;
             int newIndex = _playerIndex + direction * playerGridColumns;
@@ -137,21 +134,28 @@ public class OvenMenuController : MonoBehaviour
             if (newIndex >= 0 && newIndex < max)
                 _playerIndex = newIndex;
         }
-        else
+        else if (_currentArea == OvenSelectionArea.OvenInventory)
         {
             int max = ovenInventoryUI != null ? ovenInventoryUI.SlotCount : 0;
             int newIndex = _ovenIndex + direction * ovenGridColumns;
 
             if (newIndex >= 0 && newIndex < max)
                 _ovenIndex = newIndex;
+            else if (direction > 0)
+                _currentArea = OvenSelectionArea.BakeButton;
+        }
+        else if (_currentArea == OvenSelectionArea.BakeButton)
+        {
+            if (direction < 0)
+                _currentArea = OvenSelectionArea.OvenInventory;
         }
 
         UpdateHighlights();
     }
 
-    private void MoveSelectionHorizontal(int direction)
+    private void MoveHorizontal(int direction)
     {
-        if (_selectingPlayerSide)
+        if (_currentArea == OvenSelectionArea.PlayerInventory)
         {
             int max = ovenPlayerInventoryUI != null ? ovenPlayerInventoryUI.SlotCount : 0;
             int col = _playerIndex % playerGridColumns;
@@ -166,10 +170,10 @@ public class OvenMenuController : MonoBehaviour
                 if (col < playerGridColumns - 1 && _playerIndex + 1 < max)
                     _playerIndex++;
                 else
-                    _selectingPlayerSide = false;
+                    _currentArea = OvenSelectionArea.OvenInventory;
             }
         }
-        else
+        else if (_currentArea == OvenSelectionArea.OvenInventory)
         {
             int max = ovenInventoryUI != null ? ovenInventoryUI.SlotCount : 0;
             int col = _ovenIndex % ovenGridColumns;
@@ -184,19 +188,21 @@ public class OvenMenuController : MonoBehaviour
                 if (col > 0)
                     _ovenIndex--;
                 else
-                    _selectingPlayerSide = true;
+                    _currentArea = OvenSelectionArea.PlayerInventory;
             }
         }
 
         UpdateHighlights();
     }
 
-    private void TransferSelectedItem()
+    private void HandleTransferOrBake()
     {
-        if (_selectingPlayerSide)
+        if (_currentArea == OvenSelectionArea.PlayerInventory)
             TransferToOven();
-        else
+        else if (_currentArea == OvenSelectionArea.OvenInventory)
             TransferToPlayer();
+        else if (_currentArea == OvenSelectionArea.BakeButton)
+            Bake();
     }
 
     private void TransferToOven()
@@ -229,24 +235,25 @@ public class OvenMenuController : MonoBehaviour
         }
     }
 
-    private void RefreshAllInventoryViews()
+    public void Bake()
     {
-        if (normalPlayerInventoryUI != null)
-            normalPlayerInventoryUI.Refresh();
+        if (!HasRequiredIngredients())
+        {
+            Debug.Log("Missing recipe ingredients.");
+            return;
+        }
 
-        if (ovenPlayerInventoryUI != null)
-            ovenPlayerInventoryUI.Refresh();
+        foreach (var requirement in recipe.requirements)
+        {
+            ovenInventory.Remove(requirement.item, requirement.amount);
+        }
 
-        if (ovenInventoryUI != null)
-            ovenInventoryUI.Refresh();
-    }
+        playerInventory.Add(recipe.result, recipe.resultAmount);
 
-    private void OnBakePressed()
-    {
-        if (_isBaking) return;
-        if (!HasRequiredIngredients()) return;
+        RefreshAllInventoryViews();
+        UpdateHighlights();
 
-        StartCoroutine(BakeRoutine());
+        Debug.Log("Candy Tart baked!");
     }
 
     private bool HasRequiredIngredients()
@@ -262,55 +269,33 @@ public class OvenMenuController : MonoBehaviour
         return true;
     }
 
-    private IEnumerator BakeRoutine()
+    private void RefreshAllInventoryViews()
     {
-        _isBaking = true;
-        float duration = 1.5f;
-        float elapsed = 0f;
+        if (normalPlayerInventoryUI != null)
+            normalPlayerInventoryUI.Refresh();
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            yield return null;
-        }
+        if (ovenPlayerInventoryUI != null)
+            ovenPlayerInventoryUI.Refresh();
 
-        foreach (var requirement in recipe.requirements)
-            ovenInventory.Remove(requirement.item, requirement.amount);
-
-        playerInventory.Add(recipe.result, recipe.resultAmount);
-
-        if (audioSource != null && bakeCompleteSfx != null)
-            audioSource.PlayOneShot(bakeCompleteSfx);
-
-        RefreshAllInventoryViews();
-
-        yield return new WaitForSecondsRealtime(0.2f);
-
-        _isBaking = false;
-        UpdateHighlights();
+        if (ovenInventoryUI != null)
+            ovenInventoryUI.Refresh();
     }
 
     private void UpdateHighlights()
     {
         ClearAllHighlights();
 
-        if (_isOpen)
+        if (_currentArea == OvenSelectionArea.PlayerInventory && ovenPlayerInventoryUI != null)
         {
-            if (_selectingPlayerSide)
-            {
-                if (ovenPlayerInventoryUI != null)
-                    ovenPlayerInventoryUI.SetHighlight(_playerIndex, true);
-            }
-            else
-            {
-                if (ovenInventoryUI != null)
-                    ovenInventoryUI.SetHighlight(_ovenIndex, true);
-            }
+            ovenPlayerInventoryUI.SetHighlight(_playerIndex, true);
         }
-        else
+        else if (_currentArea == OvenSelectionArea.OvenInventory && ovenInventoryUI != null)
         {
-            if (normalPlayerInventoryUI != null)
-                normalPlayerInventoryUI.SetHighlight(_playerIndex, true);
+            ovenInventoryUI.SetHighlight(_ovenIndex, true);
+        }
+        else if (_currentArea == OvenSelectionArea.BakeButton && bakeButtonHighlight != null)
+        {
+            bakeButtonHighlight.SetActive(true);
         }
     }
 
@@ -333,5 +318,8 @@ public class OvenMenuController : MonoBehaviour
             for (int i = 0; i < ovenInventoryUI.SlotCount; i++)
                 ovenInventoryUI.SetHighlight(i, false);
         }
+
+        if (bakeButtonHighlight != null)
+            bakeButtonHighlight.SetActive(false);
     }
 }
