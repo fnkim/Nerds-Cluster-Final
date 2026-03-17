@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum QuestState{Null, NotStarted, Started, Failed, Succeeded}
+public enum QuestState{Null, NotStarted, Started, Failed, Succeeded, Ended}
 
 
 [CreateAssetMenu(menuName = "Quests/Quest")]

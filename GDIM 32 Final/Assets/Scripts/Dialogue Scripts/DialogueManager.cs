@@ -57,6 +57,11 @@ public class DialogueManager : MonoBehaviour
     private bool _waitingForPlayerResponse;
 
 
+    // event that happens when a quest is changed
+    public delegate void QuestDelegate(Quest quest);
+    public event QuestDelegate QuestChanged;
+
+
 
     private void Awake()
     {
@@ -346,6 +351,8 @@ public class DialogueManager : MonoBehaviour
         {
             //Sets the _questToSet's Quest State to _questStateToSet
             _currentNode._setQuestState._questToSet.QuestState = _currentNode._setQuestState._questStateToSet;
+
+            QuestChanged?.Invoke(_currentNode._setQuestState._questToSet);
 
         } 
 

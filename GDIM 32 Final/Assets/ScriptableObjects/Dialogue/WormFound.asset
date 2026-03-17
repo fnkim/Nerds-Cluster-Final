@@ -13,22 +13,20 @@ MonoBehaviour:
   m_Name: WormFound
   m_EditorClassIdentifier: 
   _lines:
-  - _speaker: 0
-    _portrait: {fileID: 0}
+  - _portrait: {fileID: 21300000, guid: a0c4f9dc8bea74c4cb9e751139fb19f3, type: 3}
     _dialogueText: I found you a worm!
-  - _speaker: 0
-    _portrait: {fileID: 0}
+  - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
     _dialogueText: OMG YOU'RE SO SWEET THANK YOU!
-  - _speaker: 0
-    _portrait: {fileID: 0}
+  - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
     _dialogueText: I'VE BEEN LOOKING FOR THIS KIND OF WORM FOREVER!
-  - _speaker: 0
-    _portrait: {fileID: 0}
+  - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
     _dialogueText: In return, you can have the flour you want! You now have special
-      access to it!
+      access!
+  - _portrait: {fileID: 21300000, guid: a0c4f9dc8bea74c4cb9e751139fb19f3, type: 3}
+    _dialogueText: Thanks, Squirrel!
   _playerReplyOptions: []
   _nextNode: []
   _setQuestState:
-    _questStateToSet: 0
-    _questToSet: {fileID: 0}
-  item: {fileID: 0}
+    _questStateToSet: 5
+    _questToSet: {fileID: 11400000, guid: c14a685c2cfdfc24dabe1d5d302418f8, type: 2}
+  item: {fileID: 11400000, guid: 25d74fd4f12a189448305c9ebe57719e, type: 2}

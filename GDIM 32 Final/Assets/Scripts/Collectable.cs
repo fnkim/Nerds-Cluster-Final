@@ -17,6 +17,10 @@ public class Collectable : MonoBehaviour, IInteractable
 
     [SerializeField] private Witch Player;
 
+    [Header("Sets Quest State upon collecting")]
+    [Header("Leave alone if not applicable")]
+    [SerializeField] private SetQuestState _setQuestState;
+
     void Start()
     {
         GameObject playerObj = GameObject.FindWithTag("Player");
@@ -40,6 +44,14 @@ public class Collectable : MonoBehaviour, IInteractable
         }
 
         inv.Add(item, amount);
+
+        //If the set quest state action has something in it
+        if (_setQuestState._questStateToSet != QuestState.Null)
+        {
+            //Sets the _questToSet's Quest State to _questStateToSet
+            _setQuestState._questToSet.QuestState = _setQuestState._questStateToSet;
+
+        } 
 
 
         // Remove visuals
