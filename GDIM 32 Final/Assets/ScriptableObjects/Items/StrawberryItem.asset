@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: StrawberryItem
   m_EditorClassIdentifier: 
   displayName: Strawberry
-  icon: {fileID: 21300000, guid: 85bcce7f0ef1c444d860307a566ae62c, type: 3}
+  icon: {fileID: 21300000, guid: 7716e5c7d3cd0c349815aaa9cce5300f, type: 3}
   stackable: 1
+  itemSound: 0

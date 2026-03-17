@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Blue Worm
   m_EditorClassIdentifier: 
   displayName: Blue Worm
-  icon: {fileID: 21300000, guid: aa63a657b7de0374782602ec3a8b57fd, type: 3}
+  icon: {fileID: 21300000, guid: 52f5d708f0d166f489b33165d9e88ab5, type: 3}
   stackable: 1
   itemSound: 1

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Choco Tree
   m_EditorClassIdentifier: 
   displayName: Choco Tree
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 25511156b33b57e49a6f39265c59d1a1, type: 3}
   stackable: 1
   itemSound: 2

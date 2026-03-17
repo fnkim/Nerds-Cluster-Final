@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BlueberryItem
   m_EditorClassIdentifier: 
   displayName: Blueberry
-  icon: {fileID: 21300000, guid: 396c4a805f11a2343a28ded7203b4dc9, type: 3}
+  icon: {fileID: 21300000, guid: e94e4db9edd36ee4ba90d3a6f4098a5c, type: 3}
   stackable: 1
+  itemSound: 0

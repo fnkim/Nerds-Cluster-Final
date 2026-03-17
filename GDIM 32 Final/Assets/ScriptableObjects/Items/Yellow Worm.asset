@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Yellow Worm
   m_EditorClassIdentifier: 
   displayName: Yellow Worm
-  icon: {fileID: 21300000, guid: b3d423270ff7ce64ab6f2f862f0346f7, type: 3}
+  icon: {fileID: 21300000, guid: 1cdd675b9c6234946b6f24bd480ee39d, type: 3}
   stackable: 1
   itemSound: 1
