@@ -172,6 +172,7 @@ public class DialogueManager : MonoBehaviour
         //if the current line int is less than
         else if(_currentLine < _lengthOfArray)
         {
+            
             _dialogue.ShowDialogue(_dialogueData._dialogueText);
             
             if (_dialogueData._portrait != null)
