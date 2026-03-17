@@ -8259,7 +8259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Esc - Exit
+  m_text: 'Esc or [tab] - Exit
 
     Arrow Keys - Select
 
