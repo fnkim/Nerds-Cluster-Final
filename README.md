@@ -45,8 +45,10 @@ The visuals (view) are also decoupled from the logic. One example of this is how
 Overall, this helped structure the project because the ScriptableObjects contained a useful and intuitive way of keeping track of the data without requiring our team from editing the scripts to change the dialogue. The controller handles the functions of the dialogue system separately, and visuals can be adjusted easily without affecting the other systems.
 
 
-#### Singleton Pattern
-Write about singleton here
+#### Inheritance and Polymorphism
+The QuestReactionParent class is the parent class that is used to create child classes for different reactions to quest changes. It contains member variables _questState and _quest which create inspector adjustable fields for the QuestState enum and Quest ScriptableObject. Because QuestReactionParent is a parent class, child classes do not need to redefine these variables. In Start(), this class connects a quest state change from the DialogueManager to the virtual method ReactToQuest(Quest quest) using "DialogueManager.Instance.QuestChanged += ReactToQuest;". There are various child classes that inherit from QuestReactionParent, such as HideItems. HideItems overrides ReactToQuest(Quest quest) and uses an if statement to check the argument quest that's passed in against the selected variables of _quest and questState. If it matches, it hides a GameObject. Another child class is SceneChange. It inherits from QuestReactionParent and does the same thing as HideItems, except it overrides ReactToQuest to change scenes.
+
+Overall, the inheritance and polymorphism of this quest system work together so that certain functions and variables don't have to be redefined. It makes things more efficient and organized. The overriding of the ReactToQuest method in the child classes allows them to have different reactions to quest changes.
 
 
 #### Finite State Machine Pattern
