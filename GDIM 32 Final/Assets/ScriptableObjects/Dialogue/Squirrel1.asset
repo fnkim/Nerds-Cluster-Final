@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Squirrel1
   m_EditorClassIdentifier: 
   _lines:
-  - _portrait: {fileID: 21300000, guid: 01eacae4f7d9e3a458b36d97b4e3d04f, type: 3}
+  - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}
     _dialogueText: Welcome to the Squirrel's Stash! We probably have what you're
       looking for.
   - _portrait: {fileID: 21300000, guid: 43c1216562d5e1c478203c4173861a26, type: 3}

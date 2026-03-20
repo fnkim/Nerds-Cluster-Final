@@ -12,7 +12,6 @@ public class PlayerMenuController : MonoBehaviour
 
     [Header("Controls")]
     [SerializeField] private int gridColumns = 4;
-    private KeyCode escKey = KeyCode.Escape;
     private KeyCode toggleKey = KeyCode.Tab;
     [SerializeField] private KeyCode deleteKey = KeyCode.O;
     public bool _inventoryDisabled;
@@ -42,13 +41,6 @@ public class PlayerMenuController : MonoBehaviour
                 if (!_isOpen)
                     OpenMenu();
                 else
-                    CloseMenu();
-
-                return;
-            }  
-            if (Input.GetKeyDown(escKey))
-            {
-                if (_isOpen)
                     CloseMenu();
 
                 return;

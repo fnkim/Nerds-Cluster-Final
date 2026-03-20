@@ -71,7 +71,7 @@ public class OvenMenuController : MonoBehaviour
         if (!_isOpen)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             CloseMenu();
             return;
